@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.layout.FlowPaneController">
+
+    <Example title="Children that wrap at the pane's boundary"
+             description="A horizontal FlowPane lays out its children in rows and wraps at the pane's width; a vertical one lays out columns and wraps at its height. Change the width to see the wrapping.">
+        <FlowPane fx:id="flow" styleClass="demo-area" hgap="8" vgap="8" prefWidth="460" prefHeight="220"
+                  maxWidth="-Infinity" maxHeight="-Infinity"/>
+        <options>
+            <VBox spacing="10">
+                <Label text="Orientation" styleClass="options-title"/>
+                <ComboBox fx:id="orientation" maxWidth="Infinity"/>
+                <Label fx:id="widthLabel" styleClass="options-title"/>
+                <Slider fx:id="width" min="160" max="520" value="460"/>
+                <Label fx:id="gapLabel" styleClass="options-title"/>
+                <Slider fx:id="gap" min="0" max="24" value="8"/>
+                <Label text="Alignment" styleClass="options-title"/>
+                <ComboBox fx:id="alignment" maxWidth="Infinity"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="A tag list"
+             description="FlowPane is a good fit for chips or tags of varying width. Add a tag below or click a tag to remove it.">
+        <VBox spacing="12" prefWidth="460" maxWidth="-Infinity">
+            <HBox spacing="8">
+                <TextField fx:id="tagField" promptText="New tag" onAction="#onAddTag" HBox.hgrow="ALWAYS"/>
+                <Button text="Add tag" onAction="#onAddTag"/>
+            </HBox>
+            <FlowPane fx:id="tags" hgap="6" vgap="6"/>
+            <Label fx:id="tagOutput" styleClass="example-output"/>
+        </VBox>
+    </Example>
+</DemoPage>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.VBox?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.layout.TabPaneController">
+
+    <Example title="A TabPane with closable tabs"
+             description="The closing policy decides which tabs show a close button. Tabs can be placed on any side and reordered by dragging if the drag policy allows it.">
+        <VBox spacing="12">
+            <TabPane fx:id="tabPane" prefWidth="500" prefHeight="220" maxWidth="-Infinity" maxHeight="-Infinity">
+                <Tab text="Document 1">
+                    <TextArea text="Content of document 1" wrapText="true"/>
+                </Tab>
+                <Tab text="Document 2">
+                    <TextArea text="Content of document 2" wrapText="true"/>
+                </Tab>
+                <Tab text="Document 3">
+                    <TextArea text="Content of document 3" wrapText="true"/>
+                </Tab>
+            </TabPane>
+            <Label fx:id="tabOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Button text="Add tab" maxWidth="Infinity" onAction="#onAddTab"/>
+                <Label text="Closing policy" styleClass="options-title"/>
+                <ComboBox fx:id="closingPolicy" maxWidth="Infinity"/>
+                <Label text="Side" styleClass="options-title"/>
+                <ComboBox fx:id="side" maxWidth="Infinity"/>
+                <Label text="Drag policy" styleClass="options-title"/>
+                <ComboBox fx:id="dragPolicy" maxWidth="Infinity"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="Tabs with graphics, disabled and non-closable tabs"
+             description="Each Tab can have a graphic, a tooltip, its own closable flag and can be disabled. The floating style class removes the tab pane's border.">
+        <TabPane fx:id="graphicTabs" prefWidth="500" prefHeight="180" maxWidth="-Infinity" maxHeight="-Infinity">
+            <Tab fx:id="homeTab" text="Home" closable="false">
+                <Label text="The Home tab cannot be closed." wrapText="true"/>
+            </Tab>
+            <Tab fx:id="mailTab" text="Mail">
+                <Label text="You have 3 unread messages." wrapText="true"/>
+            </Tab>
+            <Tab fx:id="settingsTab" text="Settings">
+                <Label text="Settings content."/>
+            </Tab>
+            <Tab text="Disabled" disable="true">
+                <Label text="You cannot see this."/>
+            </Tab>
+        </TabPane>
+        <options>
+            <VBox spacing="10">
+                <CheckBox fx:id="fixedWidth" text="Fixed tab width (120 px)"/>
+                <CheckBox fx:id="floating" text="Floating style"/>
+            </VBox>
+        </options>
+    </Example>
+</DemoPage>

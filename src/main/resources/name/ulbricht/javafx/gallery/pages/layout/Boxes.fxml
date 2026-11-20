@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.layout.BoxesController">
+
+    <Example title="HBox – a horizontal row"
+             description="HBox lays out its children from left to right. Spacing, padding and alignment are properties of the box; fillHeight stretches resizable children to the box height.">
+        <HBox fx:id="hbox" styleClass="demo-area" spacing="10" prefWidth="480" prefHeight="140"
+              maxWidth="-Infinity" maxHeight="-Infinity">
+            <Label text="1" styleClass="demo-box" maxHeight="Infinity"/>
+            <Label text="Two" styleClass="demo-box,alt-1" maxHeight="Infinity"/>
+            <Label text="Three" styleClass="demo-box,alt-2" maxHeight="Infinity"/>
+        </HBox>
+        <options>
+            <VBox spacing="10">
+                <Label fx:id="hSpacingLabel" styleClass="options-title"/>
+                <Slider fx:id="hSpacing" min="0" max="40" value="10"/>
+                <Label fx:id="hPaddingLabel" styleClass="options-title"/>
+                <Slider fx:id="hPadding" min="0" max="40" value="0"/>
+                <Label text="Alignment" styleClass="options-title"/>
+                <ComboBox fx:id="hAlignment" maxWidth="Infinity"/>
+                <CheckBox fx:id="hFillHeight" text="Fill height" selected="true"/>
+                <HBox spacing="8">
+                    <Button text="Add" onAction="#onAddToHBox"/>
+                    <Button text="Remove" onAction="#onRemoveFromHBox"/>
+                </HBox>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="VBox – a vertical column"
+             description="VBox lays out its children from top to bottom; fillWidth stretches resizable children to the box width.">
+        <VBox fx:id="vbox" styleClass="demo-area" spacing="10" prefWidth="300" prefHeight="240"
+              maxWidth="-Infinity" maxHeight="-Infinity">
+            <Label text="1" styleClass="demo-box" maxWidth="Infinity"/>
+            <Label text="Two" styleClass="demo-box,alt-1" maxWidth="Infinity"/>
+            <Label text="Three" styleClass="demo-box,alt-2" maxWidth="Infinity"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Label fx:id="vSpacingLabel" styleClass="options-title"/>
+                <Slider fx:id="vSpacing" min="0" max="40" value="10"/>
+                <Label fx:id="vPaddingLabel" styleClass="options-title"/>
+                <Slider fx:id="vPadding" min="0" max="40" value="0"/>
+                <Label text="Alignment" styleClass="options-title"/>
+                <ComboBox fx:id="vAlignment" maxWidth="Infinity"/>
+                <CheckBox fx:id="vFillWidth" text="Fill width" selected="true"/>
+                <HBox spacing="8">
+                    <Button text="Add" onAction="#onAddToVBox"/>
+                    <Button text="Remove" onAction="#onRemoveFromVBox"/>
+                </HBox>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="Distributing extra space with grow priorities"
+             description="HBox.hgrow (or VBox.vgrow) decides which children receive the extra space. Children with Priority.ALWAYS share it; SOMETIMES only grows if no child has ALWAYS.">
+        <HBox spacing="10" styleClass="demo-area" prefWidth="480" prefHeight="80" maxWidth="-Infinity"
+              maxHeight="-Infinity">
+            <Label fx:id="growFirst" text="First" styleClass="demo-box" maxWidth="Infinity" maxHeight="Infinity"/>
+            <Label fx:id="growSecond" text="Second" styleClass="demo-box,alt-1" maxWidth="Infinity" maxHeight="Infinity"/>
+            <Label fx:id="growThird" text="Third" styleClass="demo-box,alt-2" maxWidth="Infinity" maxHeight="Infinity"/>
+        </HBox>
+        <options>
+            <VBox spacing="10">
+                <Label text="First: hgrow" styleClass="options-title"/>
+                <ComboBox fx:id="growFirstPriority" maxWidth="Infinity"/>
+                <Label text="Second: hgrow" styleClass="options-title"/>
+                <ComboBox fx:id="growSecondPriority" maxWidth="Infinity"/>
+                <Label text="Third: hgrow" styleClass="options-title"/>
+                <ComboBox fx:id="growThirdPriority" maxWidth="Infinity"/>
+            </VBox>
+        </options>
+    </Example>
+</DemoPage>

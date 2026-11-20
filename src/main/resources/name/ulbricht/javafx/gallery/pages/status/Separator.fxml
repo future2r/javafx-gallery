@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.status.SeparatorController">
+
+    <Example title="Horizontal separators"
+             description="A horizontal Separator spans the width of its container. If it is taller than the line, valignment positions the line within the separator.">
+        <VBox fx:id="horizontalBox" spacing="6" prefWidth="360" maxWidth="-Infinity">
+            <Label text="Account" style="-fx-font-weight: bold;"/>
+            <Label text="Signed in as jane.doe@example.com"/>
+            <Separator fx:id="firstSeparator" prefHeight="24"/>
+            <Label text="Storage" style="-fx-font-weight: bold;"/>
+            <Label text="12.4 GB of 50 GB used"/>
+            <Separator fx:id="secondSeparator" prefHeight="24"/>
+            <Label text="About" style="-fx-font-weight: bold;"/>
+            <Label text="Version 1.0"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <CheckBox fx:id="showSeparators" text="Show separators" selected="true"/>
+                <Label text="Vertical alignment of the line" styleClass="options-title"/>
+                <ComboBox fx:id="valignment" maxWidth="Infinity"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="Vertical separators"
+             description="A vertical Separator divides content side by side, for example groups of buttons.">
+        <HBox spacing="8" prefHeight="40" maxHeight="-Infinity" alignment="CENTER_LEFT">
+            <Button text="Cut"/>
+            <Button text="Copy"/>
+            <Button text="Paste"/>
+            <Separator orientation="VERTICAL"/>
+            <Button text="Undo"/>
+            <Button text="Redo"/>
+            <Separator orientation="VERTICAL"/>
+            <Button text="Help"/>
+        </HBox>
+    </Example>
+
+    <Example title="Separators in a ToolBar"
+             description="Inside a ToolBar, separators automatically get the orientation perpendicular to the toolbar.">
+        <ToolBar prefWidth="420" maxWidth="-Infinity">
+            <Button text="New"/>
+            <Button text="Open"/>
+            <Separator/>
+            <Button text="Bold"/>
+            <Button text="Italic"/>
+            <Separator/>
+            <Button text="Print"/>
+        </ToolBar>
+    </Example>
+</DemoPage>

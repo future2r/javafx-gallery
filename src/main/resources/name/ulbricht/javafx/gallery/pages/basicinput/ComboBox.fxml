@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.basicinput.ComboBoxController">
+
+    <Example title="A ComboBox with items defined in code">
+        <VBox spacing="12">
+            <ComboBox fx:id="simpleCombo" promptText="Pick a fruit" prefWidth="200"/>
+            <Label fx:id="simpleOutput" styleClass="example-output" text="Nothing selected."/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <CheckBox fx:id="disableCombo" text="Disable ComboBox"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="An editable ComboBox"
+             description="The user can pick a predefined font size or type any other value and press ENTER.">
+        <VBox spacing="12">
+            <ComboBox fx:id="sizeCombo" editable="true" prefWidth="120"/>
+            <Label fx:id="sizeSample" text="You can set the font size used for this text."/>
+            <Label fx:id="sizeOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <CheckBox fx:id="editableSize" text="Editable" selected="true"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="A ComboBox with a custom cell factory"
+             description="The cell factory renders each item with a color swatch; the button cell uses the same cell type.">
+        <VBox spacing="12">
+            <HBox spacing="16">
+                <ComboBox fx:id="colorCombo" prefWidth="200"/>
+                <Rectangle fx:id="colorPreview" width="80" height="28" arcWidth="6" arcHeight="6"/>
+            </HBox>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Label text="Visible rows" styleClass="options-title"/>
+                <ComboBox fx:id="visibleRows" maxWidth="Infinity"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="A font picker"
+             description="Each font family is rendered in its own font.">
+        <VBox spacing="12">
+            <ComboBox fx:id="fontCombo" prefWidth="260"/>
+            <Label fx:id="fontSample" text="The quick brown fox jumps over the lazy dog."/>
+        </VBox>
+    </Example>
+</DemoPage>

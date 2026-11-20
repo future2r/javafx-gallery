@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.styling.TransitionsController">
+
+    <Example title="Single transitions"
+             description="Each Transition animates one aspect of a node. Duration, cycle count, auto reverse and interpolator are common to all of them.">
+        <VBox spacing="12">
+            <Pane fx:id="singleStage" styleClass="demo-area" prefWidth="560" prefHeight="220" minWidth="560"
+                  minHeight="220" maxWidth="-Infinity" maxHeight="-Infinity"/>
+            <HBox spacing="8">
+                <Button text="Play" onAction="#onPlaySingle"/>
+                <Button text="Pause" onAction="#onPauseSingle"/>
+                <Button text="Stop" onAction="#onStopSingle"/>
+            </HBox>
+            <Label fx:id="singleOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Label text="Transition" styleClass="options-title"/>
+                <ComboBox fx:id="transitionType" maxWidth="Infinity"/>
+                <Label text="Duration (seconds)" styleClass="options-title"/>
+                <Slider fx:id="duration" min="0.2" max="5" value="1.5" showTickLabels="true" majorTickUnit="1"/>
+                <Label text="Cycle count" styleClass="options-title"/>
+                <Spinner fx:id="cycleCount" maxWidth="Infinity"/>
+                <CheckBox fx:id="indefinite" text="Indefinite"/>
+                <CheckBox fx:id="autoReverse" text="Auto reverse" selected="true"/>
+                <Label text="Interpolator" styleClass="options-title"/>
+                <ComboBox fx:id="interpolator" maxWidth="Infinity"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="Sequential and parallel transitions"
+             description="A SequentialTransition plays its children one after another, a ParallelTransition plays them at the same time.">
+        <VBox spacing="12">
+            <Pane fx:id="groupStage" styleClass="demo-area" prefWidth="560" prefHeight="220" minWidth="560"
+                  minHeight="220" maxWidth="-Infinity" maxHeight="-Infinity"/>
+            <HBox spacing="8">
+                <Button text="Play" onAction="#onPlayGroup"/>
+                <Button text="Pause" onAction="#onPauseGroup"/>
+                <Button text="Stop" onAction="#onStopGroup"/>
+            </HBox>
+            <Label fx:id="groupOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <fx:define>
+                    <ToggleGroup fx:id="groupMode"/>
+                </fx:define>
+                <RadioButton fx:id="sequentialMode" text="SequentialTransition" toggleGroup="$groupMode"
+                             selected="true"/>
+                <RadioButton fx:id="parallelMode" text="ParallelTransition" toggleGroup="$groupMode"/>
+                <CheckBox fx:id="groupAutoReverse" text="Auto reverse (cycle count 2)"/>
+            </VBox>
+        </options>
+    </Example>
+</DemoPage>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.basicinput.SplitMenuButtonController">
+
+    <Example title="A SplitMenuButton that remembers the last choice"
+             description="The main part applies the current color; the arrow opens a menu to choose another color, which is applied at once and becomes the new default.">
+        <VBox spacing="12">
+            <HBox spacing="16">
+                <SplitMenuButton fx:id="colorButton" text="Apply color" onAction="#onApplyColor"/>
+                <Rectangle fx:id="colorTarget" width="120" height="40" arcWidth="6" arcHeight="6"/>
+            </HBox>
+            <Label fx:id="colorOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <CheckBox fx:id="disableButton" text="Disable SplitMenuButton"/>
+                <Label text="Popup side" styleClass="options-title"/>
+                <ComboBox fx:id="popupSide" maxWidth="Infinity"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="A SplitMenuButton with a default command"
+             description="Clicking the main part fires the button's onAction, the menu offers related commands.">
+        <VBox spacing="12">
+            <SplitMenuButton fx:id="saveButton" text="Save" onAction="#onSave">
+                <items>
+                    <MenuItem text="Save as…" onAction="#onSaveItem"/>
+                    <MenuItem text="Save a copy…" onAction="#onSaveItem"/>
+                    <MenuItem text="Save all" onAction="#onSaveItem"/>
+                </items>
+            </SplitMenuButton>
+            <Label fx:id="saveOutput" styleClass="example-output" text="Click the button or open the menu."/>
+        </VBox>
+    </Example>
+</DemoPage>

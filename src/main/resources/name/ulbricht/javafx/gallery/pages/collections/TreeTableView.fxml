@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.layout.VBox?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.collections.TreeTableViewController">
+
+    <Example title="A file system in a TreeTableView"
+             description="The first column is the tree column with the disclosure nodes; the other columns show properties of each item. Click a header to sort – children are sorted within their parent.">
+        <VBox spacing="12">
+            <TreeTableView fx:id="fileTable" prefWidth="620" prefHeight="320">
+                <columns>
+                    <TreeTableColumn fx:id="nameColumn" text="Name" prefWidth="250"/>
+                    <TreeTableColumn fx:id="sizeColumn" text="Size" prefWidth="100"/>
+                    <TreeTableColumn fx:id="typeColumn" text="Type" prefWidth="110"/>
+                    <TreeTableColumn fx:id="modifiedColumn" text="Modified" prefWidth="110"/>
+                </columns>
+            </TreeTableView>
+            <Label fx:id="fileOutput" styleClass="example-output" text="Select a row."/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <CheckBox fx:id="showRoot" text="Show root" selected="true"/>
+                <CheckBox fx:id="menuButtonVisible" text="Show column menu button"/>
+                <Label text="Sort mode" styleClass="options-title"/>
+                <ComboBox fx:id="sortMode" maxWidth="Infinity"/>
+                <Button text="Expand all" maxWidth="Infinity" onAction="#onExpandAll"/>
+                <Button text="Collapse all" maxWidth="Infinity" onAction="#onCollapseAll"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="An editable organization chart"
+             description="TextFieldTreeTableCell and ComboBoxTreeTableCell edit the properties of the persons in the hierarchy. Double-click a cell to edit it.">
+        <VBox spacing="12">
+            <TreeTableView fx:id="orgTable" editable="true" prefWidth="620" prefHeight="280">
+                <columns>
+                    <TreeTableColumn fx:id="orgFirstName" text="First name" prefWidth="170"/>
+                    <TreeTableColumn fx:id="orgLastName" text="Last name" prefWidth="130"/>
+                    <TreeTableColumn fx:id="orgDepartment" text="Department" prefWidth="140"/>
+                    <TreeTableColumn fx:id="orgEmail" text="E-mail" prefWidth="160"/>
+                </columns>
+            </TreeTableView>
+            <Label fx:id="orgOutput" styleClass="example-output" text="Double-click a cell to edit it."/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <CheckBox fx:id="editableCheck" text="Editable" selected="true"/>
+                <CheckBox fx:id="cellSelection" text="Cell selection"/>
+            </VBox>
+        </options>
+    </Example>
+</DemoPage>

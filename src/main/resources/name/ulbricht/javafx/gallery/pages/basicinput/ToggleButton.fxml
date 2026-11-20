@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.basicinput.ToggleButtonController">
+
+    <Example title="A simple ToggleButton">
+        <VBox spacing="12">
+            <ToggleButton fx:id="simpleToggle" text="ToggleButton"/>
+            <Label fx:id="simpleOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <CheckBox fx:id="disableSimple" text="Disable ToggleButton"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="ToggleButtons in a ToggleGroup"
+             description="Within a ToggleGroup at most one button is selected. Modena's left-pill, center-pill and right-pill style classes render the group as a segmented control.">
+        <VBox spacing="12">
+            <HBox>
+                <ToggleButton fx:id="alignLeft" text="Left" styleClass="left-pill"/>
+                <ToggleButton fx:id="alignCenter" text="Center" styleClass="center-pill"/>
+                <ToggleButton fx:id="alignRight" text="Right" styleClass="right-pill"/>
+            </HBox>
+            <Label fx:id="alignedText" text="Aligned text" prefWidth="320" maxWidth="320"
+                   styleClass="demo-area" style="-fx-padding: 10;"/>
+            <Label fx:id="groupOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <CheckBox fx:id="requireSelection" text="Always keep one button selected" selected="true"
+                          wrapText="true"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="Independent ToggleButtons as formatting toolbar"
+             description="ToggleButtons without a group can be combined freely.">
+        <VBox spacing="12">
+            <HBox spacing="4">
+                <ToggleButton fx:id="boldToggle" text="B" style="-fx-font-weight: bold;" prefWidth="36"/>
+                <ToggleButton fx:id="italicToggle" text="I" style="-fx-font-style: italic;" prefWidth="36"/>
+                <ToggleButton fx:id="underlineToggle" text="U" underline="true" prefWidth="36"/>
+            </HBox>
+            <Label fx:id="formattedText" text="The quick brown fox jumps over the lazy dog."/>
+        </VBox>
+    </Example>
+</DemoPage>

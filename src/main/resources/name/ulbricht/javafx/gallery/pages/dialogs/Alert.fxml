@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.dialogs.AlertController">
+
+    <Example title="Alert types"
+             description="Each AlertType brings its own icon and default buttons. showAndWait() blocks until the dialog is closed and returns the chosen ButtonType.">
+        <VBox spacing="12">
+            <Button text="Show alert" onAction="#onShowAlert"/>
+            <Label fx:id="typeOutput" styleClass="example-output" text="Choose a type and click the button."/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Label text="Alert type" styleClass="options-title"/>
+                <ComboBox fx:id="alertType" maxWidth="Infinity"/>
+                <Label text="Header text" styleClass="options-title"/>
+                <TextField fx:id="headerText" text="Something happened"/>
+                <Label text="Content text" styleClass="options-title"/>
+                <TextField fx:id="contentText" text="This is the content of the alert."/>
+                <CheckBox fx:id="modal" text="Modal (showAndWait)" selected="true"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="Custom buttons"
+             description="Pass your own ButtonTypes. Their ButtonData decides the order and which button is the default or cancel button.">
+        <VBox spacing="12">
+            <Button text="Close document" onAction="#onCustomButtons"/>
+            <Label fx:id="customOutput" styleClass="example-output"/>
+        </VBox>
+    </Example>
+
+    <Example title="Expandable content"
+             description="Additional details, such as a stack trace, can be shown in an expandable area below the content.">
+        <VBox spacing="12">
+            <Button text="Simulate an error" onAction="#onExpandable"/>
+            <Label fx:id="expandableOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <CheckBox fx:id="expanded" text="Expanded initially"/>
+            </VBox>
+        </options>
+    </Example>
+</DemoPage>

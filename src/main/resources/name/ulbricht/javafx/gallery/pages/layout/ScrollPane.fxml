@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.layout.ScrollPaneController">
+
+    <Example title="Scrolling content larger than the viewport"
+             description="Scroll bar policies decide when scroll bars are shown. With fitToWidth or fitToHeight, resizable content is sized to the viewport – this FlowPane then wraps its tiles instead of scrolling horizontally.">
+        <VBox spacing="12">
+            <ScrollPane fx:id="scrollPane" prefWidth="460" prefHeight="260" maxWidth="-Infinity" maxHeight="-Infinity">
+                <FlowPane fx:id="scrollContent" hgap="6" vgap="6" prefWrapLength="900"/>
+            </ScrollPane>
+            <Label fx:id="scrollOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Label text="Horizontal scroll bar" styleClass="options-title"/>
+                <ComboBox fx:id="hbarPolicy" maxWidth="Infinity"/>
+                <Label text="Vertical scroll bar" styleClass="options-title"/>
+                <ComboBox fx:id="vbarPolicy" maxWidth="Infinity"/>
+                <CheckBox fx:id="pannable" text="Pannable (drag with the mouse)"/>
+                <CheckBox fx:id="fitToWidth" text="Fit to width"/>
+                <CheckBox fx:id="fitToHeight" text="Fit to height"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="Zooming and scrolling programmatically"
+             description="Content inside a Group is scrolled by its visual bounds, so scaling the content updates the scroll range. hvalue and vvalue scroll to a position between hmin/vmin and hmax/vmax.">
+        <ScrollPane fx:id="zoomPane" pannable="true" prefWidth="460" prefHeight="280" maxWidth="-Infinity"
+                    maxHeight="-Infinity"/>
+        <options>
+            <VBox spacing="10">
+                <Label fx:id="zoomLabel" styleClass="options-title"/>
+                <Slider fx:id="zoom" min="0.25" max="3" value="1"/>
+                <HBox spacing="8">
+                    <Button text="Top left" onAction="#onScrollTopLeft"/>
+                    <Button text="Center" onAction="#onScrollCenter"/>
+                </HBox>
+                <Button text="Bottom right" onAction="#onScrollBottomRight"/>
+            </VBox>
+        </options>
+    </Example>
+</DemoPage>

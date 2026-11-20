@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.CustomMenuItem?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioMenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.menus.MenuBarController">
+
+    <Example title="A simple MenuBar"
+             description="Menus contain menu items and separators. An underscore in the text defines a mnemonic: press ALT to reveal it.">
+        <VBox spacing="12">
+            <MenuBar fx:id="simpleMenuBar">
+                <menus>
+                    <Menu text="_File">
+                        <items>
+                            <MenuItem fx:id="newItem" text="_New" onAction="#onMenuItem"/>
+                            <MenuItem text="_Open…" onAction="#onMenuItem"/>
+                            <MenuItem text="_Save" onAction="#onMenuItem"/>
+                            <MenuItem text="Save _As…" onAction="#onMenuItem"/>
+                            <SeparatorMenuItem/>
+                            <MenuItem text="E_xit" onAction="#onMenuItem"/>
+                        </items>
+                    </Menu>
+                    <Menu fx:id="editMenu" text="_Edit">
+                        <items>
+                            <MenuItem fx:id="undoItem" text="_Undo" onAction="#onMenuItem"/>
+                            <SeparatorMenuItem/>
+                            <MenuItem fx:id="cutItem" text="Cu_t" onAction="#onMenuItem"/>
+                            <MenuItem fx:id="copyItem" text="_Copy" onAction="#onMenuItem"/>
+                            <MenuItem fx:id="pasteItem" text="_Paste" onAction="#onMenuItem"/>
+                        </items>
+                    </Menu>
+                    <Menu text="_Help">
+                        <items>
+                            <MenuItem text="_About" onAction="#onMenuItem"/>
+                        </items>
+                    </Menu>
+                </menus>
+            </MenuBar>
+            <Label fx:id="simpleOutput" styleClass="example-output" text="Choose a menu item."/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <CheckBox fx:id="disableEdit" text="Disable Edit menu"/>
+                <CheckBox fx:id="disablePaste" text="Disable Paste item"/>
+                <CheckBox fx:id="useSystemMenuBar" text="Use system menu bar (macOS)"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="Accelerators, check and radio menu items"
+             description="Accelerators (keyboard shortcuts) fire a menu item even when its menu is closed. CheckMenuItems toggle, RadioMenuItems in a ToggleGroup are mutually exclusive.">
+        <VBox spacing="12">
+            <MenuBar>
+                <menus>
+                    <Menu text="F_ormat">
+                        <items>
+                            <MenuItem fx:id="boldItem" text="_Bold" accelerator="Shortcut+B" onAction="#onFormatItem"/>
+                            <MenuItem fx:id="italicItem" text="_Italic" accelerator="Shortcut+I" onAction="#onFormatItem"/>
+                            <MenuItem fx:id="underlineItem" text="_Underline" accelerator="Shortcut+U" onAction="#onFormatItem"/>
+                            <SeparatorMenuItem/>
+                            <MenuItem text="_Clear formatting" accelerator="Shortcut+Shift+Space" onAction="#onFormatItem"/>
+                        </items>
+                    </Menu>
+                    <Menu text="_View">
+                        <items>
+                            <CheckMenuItem fx:id="statusBarItem" text="_Status bar" selected="true"/>
+                            <CheckMenuItem fx:id="wordWrapItem" text="_Word wrap"/>
+                            <SeparatorMenuItem/>
+                            <RadioMenuItem fx:id="smallItem" text="S_mall icons"/>
+                            <RadioMenuItem fx:id="mediumItem" text="M_edium icons" selected="true"/>
+                            <RadioMenuItem fx:id="largeItem" text="_Large icons"/>
+                        </items>
+                    </Menu>
+                </menus>
+            </MenuBar>
+            <Label fx:id="formatOutput" styleClass="example-output" text="Try Ctrl+B, Ctrl+I or Ctrl+U."/>
+            <Label fx:id="viewOutput" styleClass="example-output"/>
+        </VBox>
+    </Example>
+
+    <Example title="Sub menus, graphics and custom menu items"
+             description="A Menu can be nested inside another Menu. A CustomMenuItem hosts any node, e.g. a Slider; with hideOnClick=false the menu stays open.">
+        <VBox spacing="12">
+            <MenuBar>
+                <menus>
+                    <Menu text="_Insert">
+                        <items>
+                            <Menu text="_Shape">
+                                <items>
+                                    <MenuItem fx:id="circleItem" text="_Circle" onAction="#onInsertItem"/>
+                                    <MenuItem fx:id="rectangleItem" text="_Rectangle" onAction="#onInsertItem"/>
+                                    <MenuItem fx:id="starItem" text="S_tar" onAction="#onInsertItem"/>
+                                </items>
+                            </Menu>
+                            <Menu fx:id="recentMenu" text="_Recent files"/>
+                            <SeparatorMenuItem/>
+                            <CustomMenuItem hideOnClick="false">
+                                <content>
+                                    <HBox spacing="8" alignment="CENTER_LEFT">
+                                        <Label text="Zoom"/>
+                                        <Slider fx:id="zoomSlider" min="25" max="200" value="100" prefWidth="140"/>
+                                        <Label fx:id="zoomValue" minWidth="40"/>
+                                    </HBox>
+                                </content>
+                            </CustomMenuItem>
+                        </items>
+                    </Menu>
+                </menus>
+            </MenuBar>
+            <Label fx:id="insertOutput" styleClass="example-output" text="Open the Insert menu."/>
+        </VBox>
+    </Example>
+</DemoPage>

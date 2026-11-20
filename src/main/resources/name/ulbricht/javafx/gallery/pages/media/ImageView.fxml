@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.media.ImageViewController">
+
+    <Example title="Scaling an image"
+             description="fitWidth and fitHeight scale the image (0 means: use the image size). preserveRatio keeps the aspect ratio, smooth selects a better but slower filter. The image is generated with a PixelWriter.">
+        <VBox spacing="12">
+            <ImageView fx:id="scaledView"/>
+            <Label fx:id="scaledOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Label fx:id="fitWidthLabel" styleClass="options-title"/>
+                <Slider fx:id="fitWidth" min="0" max="480" value="320"/>
+                <Label fx:id="fitHeightLabel" styleClass="options-title"/>
+                <Slider fx:id="fitHeight" min="0" max="300" value="0"/>
+                <CheckBox fx:id="preserveRatio" text="Preserve ratio" selected="true"/>
+                <CheckBox fx:id="smooth" text="Smooth" selected="true"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="Smooth versus pixelated scaling"
+             description="A 16 × 16 pixel image scaled up ten times: with smooth=true the pixels are interpolated, with smooth=false they stay sharp.">
+        <HBox spacing="24">
+            <VBox spacing="6">
+                <ImageView fx:id="smoothPixelView" fitWidth="160" fitHeight="160" smooth="true"/>
+                <Label text="smooth = true" styleClass="example-output"/>
+            </VBox>
+            <VBox spacing="6">
+                <ImageView fx:id="sharpPixelView" fitWidth="160" fitHeight="160" smooth="false"/>
+                <Label text="smooth = false" styleClass="example-output"/>
+            </VBox>
+        </HBox>
+    </Example>
+
+    <Example title="Viewport cropping"
+             description="The viewport is a Rectangle2D in image coordinates. Only this part of the image is displayed – handy for sprite sheets and zooming.">
+        <HBox spacing="24">
+            <VBox spacing="6">
+                <Pane fx:id="thumbnailPane">
+                    <ImageView fx:id="thumbnailView" fitWidth="240" preserveRatio="true"/>
+                    <Rectangle fx:id="viewportMarker" fill="transparent" stroke="white" strokeWidth="2"/>
+                </Pane>
+                <Label text="Whole image" styleClass="example-output"/>
+            </VBox>
+            <VBox spacing="6">
+                <ImageView fx:id="viewportView" fitWidth="240" preserveRatio="true"/>
+                <Label fx:id="viewportOutput" styleClass="example-output"/>
+            </VBox>
+        </HBox>
+        <options>
+            <VBox spacing="10">
+                <Label fx:id="viewportXLabel" styleClass="options-title"/>
+                <Slider fx:id="viewportX" min="0" max="440" value="200"/>
+                <Label fx:id="viewportYLabel" styleClass="options-title"/>
+                <Slider fx:id="viewportY" min="0" max="260" value="80"/>
+                <Label fx:id="viewportWidthLabel" styleClass="options-title"/>
+                <Slider fx:id="viewportWidth" min="40" max="480" value="200"/>
+                <Label fx:id="viewportHeightLabel" styleClass="options-title"/>
+                <Slider fx:id="viewportHeight" min="40" max="300" value="125"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="Rotation and snapshots"
+             description="Like every node, an ImageView can be rotated and scaled. Node.snapshot() renders any node into a WritableImage that can then be displayed.">
+        <VBox spacing="12">
+            <StackPane minWidth="320" minHeight="320" maxWidth="320" maxHeight="320" styleClass="demo-area">
+                <ImageView fx:id="rotatedView" fitWidth="220" preserveRatio="true"/>
+            </StackPane>
+            <HBox spacing="8">
+                <Button text="Snapshot of shapes" onAction="#onSnapshot"/>
+                <Button text="Reset image" onAction="#onResetImage"/>
+            </HBox>
+            <Label fx:id="rotationOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Label fx:id="rotateLabel" styleClass="options-title"/>
+                <Slider fx:id="rotate" min="-180" max="180" value="15"/>
+                <CheckBox fx:id="mirror" text="Mirror horizontally"/>
+            </VBox>
+        </options>
+    </Example>
+</DemoPage>

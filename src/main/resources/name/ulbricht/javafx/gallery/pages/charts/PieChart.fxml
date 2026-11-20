@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.charts.PieChartController">
+
+    <Example title="A PieChart"
+             description="Each PieChart.Data is a slice whose size is its share of the total. Click a slice to inspect it.">
+        <VBox spacing="12">
+            <PieChart fx:id="browserChart" title="Browser market share" prefWidth="560" prefHeight="360"/>
+            <Label fx:id="browserOutput" styleClass="example-output" text="Click a slice."/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Label text="Title" styleClass="options-title"/>
+                <TextField fx:id="browserTitle"/>
+                <CheckBox fx:id="browserAnimated" text="Animated"/>
+                <CheckBox fx:id="browserLegend" text="Legend visible"/>
+                <Label text="Legend side" styleClass="options-title"/>
+                <ComboBox fx:id="browserLegendSide" maxWidth="Infinity"/>
+                <CheckBox fx:id="labelsVisible" text="Labels visible" selected="true"/>
+                <CheckBox fx:id="clockwise" text="Clockwise" selected="true"/>
+                <Label text="Start angle" styleClass="options-title"/>
+                <Slider fx:id="startAngle" min="0" max="360" showTickLabels="true" majorTickUnit="90"/>
+                <Label text="Label line length" styleClass="options-title"/>
+                <Slider fx:id="labelLineLength" min="0" max="50" showTickLabels="true" majorTickUnit="10"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="Changing slices live"
+             description="The pie value of a slice is a property; the chart animates every change. Slices can also be added and removed.">
+        <VBox spacing="12">
+            <PieChart fx:id="budgetChart" title="Project time allocation" prefWidth="560" prefHeight="340"/>
+            <Label fx:id="budgetOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Label text="Slice" styleClass="options-title"/>
+                <ComboBox fx:id="sliceSelector" maxWidth="Infinity"/>
+                <Label text="Value" styleClass="options-title"/>
+                <Slider fx:id="sliceValue" min="1" max="100" showTickLabels="true" majorTickUnit="25"/>
+                <Button text="Add slice" maxWidth="Infinity" onAction="#onAddSlice"/>
+                <Button text="Remove selected slice" maxWidth="Infinity" onAction="#onRemoveSlice"/>
+            </VBox>
+        </options>
+    </Example>
+</DemoPage>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.styling.CssController">
+
+    <Example title="Inline styles with setStyle"
+             description="Node.setStyle takes CSS declarations that apply to this node only and override stylesheet rules.">
+        <VBox spacing="12">
+            <HBox minHeight="80" alignment="CENTER_LEFT">
+                <Button fx:id="inlineTarget" text="A styled button"/>
+            </HBox>
+            <Label fx:id="inlineOutput" styleClass="example-output" wrapText="true"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Label text="Preset" styleClass="options-title"/>
+                <ComboBox fx:id="inlinePreset" maxWidth="Infinity"/>
+                <Label text="Style" styleClass="options-title"/>
+                <TextArea fx:id="inlineStyle" prefRowCount="5" prefColumnCount="22" wrapText="true"/>
+                <Button text="Apply style" maxWidth="Infinity" onAction="#onApplyInlineStyle"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="Style classes and a stylesheet from a data: URL"
+             description="Style classes can be added and removed at runtime. The rules come from a stylesheet that is built from the text below and added to the container as a data:text/css;base64 URL.">
+        <VBox fx:id="classContainer" spacing="12">
+            <HBox minHeight="80" alignment="CENTER_LEFT">
+                <Label fx:id="classTarget" text="Style me with classes"/>
+            </HBox>
+            <Label fx:id="classOutput" styleClass="example-output" wrapText="true"/>
+            <TextArea fx:id="stylesheetText" prefRowCount="8" prefColumnCount="50"
+                      style="-fx-font-family: monospace;"/>
+            <Button text="Apply stylesheet" onAction="#onApplyStylesheet"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Label text="Style classes" styleClass="options-title"/>
+                <CheckBox fx:id="classHighlight" text="demo-highlight" selected="true"/>
+                <CheckBox fx:id="classRounded" text="demo-rounded"/>
+                <CheckBox fx:id="classOutlined" text="demo-outlined"/>
+                <CheckBox fx:id="classLarge" text="demo-large"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="A custom pseudo class"
+             description="PseudoClass.getPseudoClass creates a pseudo class, Node.pseudoClassStateChanged switches it on and off. The stylesheet styles .validated-field:valid and .validated-field:invalid.">
+        <VBox fx:id="pseudoContainer" spacing="12">
+            <TextField fx:id="emailField" styleClass="validated-field" promptText="Enter an e-mail address"
+                       maxWidth="320"/>
+            <Label fx:id="pseudoOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <CheckBox fx:id="validationEnabled" text="Validation enabled" selected="true"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="Looked-up colors"
+             description="Modena derives all colors from a few looked-up colors such as -fx-base and -fx-accent. Setting them on a container restyles every control inside.">
+        <VBox spacing="12">
+            <VBox fx:id="lookedUpContainer" spacing="12">
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Button text="Button"/>
+                    <ToggleButton text="ToggleButton" selected="true"/>
+                    <CheckBox text="CheckBox" selected="true"/>
+                    <RadioButton text="RadioButton" selected="true"/>
+                </HBox>
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <TextField text="TextField" prefColumnCount="10"/>
+                    <Slider value="60" prefWidth="140"/>
+                    <ProgressBar progress="0.6" prefWidth="140"/>
+                </HBox>
+            </VBox>
+            <Label fx:id="lookedUpOutput" styleClass="example-output" wrapText="true"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Label text="-fx-base" styleClass="options-title"/>
+                <ColorPicker fx:id="baseColor" maxWidth="Infinity"/>
+                <Label text="-fx-accent" styleClass="options-title"/>
+                <ColorPicker fx:id="accentColor" maxWidth="Infinity"/>
+                <Button text="Reset" maxWidth="Infinity" onAction="#onResetLookedUp"/>
+            </VBox>
+        </options>
+    </Example>
+</DemoPage>

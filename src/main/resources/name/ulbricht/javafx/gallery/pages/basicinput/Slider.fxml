@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.basicinput.SliderController">
+
+    <Example title="A simple Slider">
+        <VBox spacing="12">
+            <Slider fx:id="simpleSlider" min="0" max="100" value="40" maxWidth="320"/>
+            <Label fx:id="simpleOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <CheckBox fx:id="disableSlider" text="Disable Slider"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="A Slider with tick marks and snapping"
+             description="Major ticks every 25 units with 4 minor ticks in between. With snapToTicks the thumb jumps to the nearest tick.">
+        <VBox spacing="12">
+            <Slider fx:id="tickSlider" min="0" max="100" value="50" majorTickUnit="25" minorTickCount="4"
+                    blockIncrement="5" showTickMarks="true" showTickLabels="true" snapToTicks="true"
+                    maxWidth="360"/>
+            <Label fx:id="tickOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <CheckBox fx:id="showTickMarks" text="Show tick marks" selected="true"/>
+                <CheckBox fx:id="showTickLabels" text="Show tick labels" selected="true"/>
+                <CheckBox fx:id="snapToTicks" text="Snap to ticks" selected="true"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="A vertical Slider" description="The Slider controls the radius of the circle.">
+        <HBox spacing="24">
+            <Slider fx:id="verticalSlider" orientation="VERTICAL" min="5" max="90" value="40" prefHeight="200"
+                    majorTickUnit="20" showTickMarks="true"/>
+            <StackPane minWidth="200" minHeight="200" prefWidth="200" prefHeight="200" styleClass="demo-area">
+                <Circle fx:id="circle" fill="#3d8fd1"/>
+            </StackPane>
+            <Label fx:id="verticalOutput" styleClass="example-output"/>
+        </HBox>
+        <options>
+            <VBox spacing="10">
+                <CheckBox fx:id="verticalTicks" text="Show tick marks" selected="true"/>
+            </VBox>
+        </options>
+    </Example>
+</DemoPage>

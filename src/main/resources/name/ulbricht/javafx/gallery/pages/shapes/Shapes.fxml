@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Arc?>
+<?import javafx.scene.shape.Rectangle?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.shapes.ShapesController">
+
+    <Example title="The basic 2D shapes"
+             description="All shapes share fill, stroke, stroke width, dash array, line cap and line join. Open shapes (Line, Polyline, curves) are only stroked here.">
+        <FlowPane fx:id="shapeGallery" hgap="24" vgap="20" prefWrapLength="560"/>
+        <options>
+            <VBox spacing="10">
+                <Label text="Fill" styleClass="options-title"/>
+                <ColorPicker fx:id="fillColor" maxWidth="Infinity"/>
+                <Label text="Stroke" styleClass="options-title"/>
+                <ColorPicker fx:id="strokeColor" maxWidth="Infinity"/>
+                <Label text="Stroke width" styleClass="options-title"/>
+                <Slider fx:id="strokeWidth" min="0" max="12" value="3" showTickLabels="true" majorTickUnit="4"/>
+                <Label text="Dash array" styleClass="options-title"/>
+                <ComboBox fx:id="dashStyle" maxWidth="Infinity"/>
+                <Label text="Stroke line cap" styleClass="options-title"/>
+                <ComboBox fx:id="lineCap" maxWidth="Infinity"/>
+                <Label text="Stroke line join" styleClass="options-title"/>
+                <ComboBox fx:id="lineJoin" maxWidth="Infinity"/>
+                <Label text="Stroke type" styleClass="options-title"/>
+                <ComboBox fx:id="strokeType" maxWidth="Infinity"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="Rounded rectangles and arcs"
+             description="arcWidth and arcHeight round the corners of a Rectangle; an Arc is defined by center, radii, start angle, length and ArcType.">
+        <HBox spacing="40">
+            <Rectangle fx:id="roundRect" width="200" height="140" arcWidth="30" arcHeight="30" fill="#56b16a"
+                       stroke="#2e6b3b" strokeWidth="2"/>
+            <Pane prefWidth="180" prefHeight="180" minWidth="180" minHeight="180">
+                <Arc fx:id="arc" centerX="90" centerY="90" radiusX="80" radiusY="80" startAngle="45" length="270"
+                     fill="#e5734b" stroke="#8a3a1d" strokeWidth="2"/>
+            </Pane>
+        </HBox>
+        <options>
+            <VBox spacing="10">
+                <Label text="Rectangle arc width" styleClass="options-title"/>
+                <Slider fx:id="arcWidth" min="0" max="140" value="30" showTickLabels="true" majorTickUnit="35"/>
+                <Label text="Rectangle arc height" styleClass="options-title"/>
+                <Slider fx:id="arcHeight" min="0" max="140" value="30" showTickLabels="true" majorTickUnit="35"/>
+                <Label text="Arc start angle" styleClass="options-title"/>
+                <Slider fx:id="arcStart" min="0" max="360" value="45" showTickLabels="true" majorTickUnit="90"/>
+                <Label text="Arc length" styleClass="options-title"/>
+                <Slider fx:id="arcLength" min="0" max="360" value="270" showTickLabels="true" majorTickUnit="90"/>
+                <Label text="Arc type" styleClass="options-title"/>
+                <ComboBox fx:id="arcType" maxWidth="Infinity"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="Combining shapes"
+             description="Shape.union, Shape.intersect and Shape.subtract create a new Path from two shapes. The dashed outlines show the operands.">
+        <VBox spacing="12">
+            <Pane fx:id="combinePane" prefWidth="400" prefHeight="200" minWidth="400" minHeight="200"/>
+            <Label fx:id="combineOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Label text="Operation" styleClass="options-title"/>
+                <ComboBox fx:id="combineOperation" maxWidth="Infinity"/>
+            </VBox>
+        </options>
+    </Example>
+</DemoPage>

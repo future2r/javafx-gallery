@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.collections.TableViewController">
+
+    <Example title="A TableView with sortable and resizable columns"
+             description="Click a column header to sort (SHIFT+click adds a secondary sort column), drag a header to reorder and drag the header border to resize.">
+        <VBox spacing="12">
+            <TableView fx:id="basicTable" prefWidth="620" prefHeight="300">
+                <columns>
+                    <TableColumn fx:id="basicFirstName" text="First name" prefWidth="100"/>
+                    <TableColumn fx:id="basicLastName" text="Last name" prefWidth="100"/>
+                    <TableColumn fx:id="basicAge" text="Age" prefWidth="60"/>
+                    <TableColumn fx:id="basicDepartment" text="Department" prefWidth="120"/>
+                    <TableColumn fx:id="basicEmail" text="E-mail" prefWidth="200"/>
+                    <TableColumn fx:id="basicActive" text="Active" prefWidth="60"/>
+                </columns>
+            </TableView>
+            <Label fx:id="basicOutput" styleClass="example-output" text="Select a row." wrapText="true"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Label text="Column resize policy" styleClass="options-title"/>
+                <ComboBox fx:id="resizePolicy" maxWidth="Infinity"/>
+                <Label text="Selection mode" styleClass="options-title"/>
+                <ComboBox fx:id="selectionMode" maxWidth="Infinity"/>
+                <CheckBox fx:id="cellSelection" text="Cell selection"/>
+                <CheckBox fx:id="menuButtonVisible" text="Show column menu button"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="Editable cells"
+             description="TextFieldTableCell, ComboBoxTableCell and CheckBoxTableCell edit the properties of the row items directly. Double-click a cell to edit it.">
+        <VBox spacing="12">
+            <TableView fx:id="editTable" editable="true" prefWidth="620" prefHeight="260">
+                <columns>
+                    <TableColumn fx:id="editFirstName" text="First name" prefWidth="110"/>
+                    <TableColumn fx:id="editLastName" text="Last name" prefWidth="110"/>
+                    <TableColumn fx:id="editAge" text="Age" prefWidth="70"/>
+                    <TableColumn fx:id="editDepartment" text="Department" prefWidth="150"/>
+                    <TableColumn fx:id="editActive" text="Active" prefWidth="70"/>
+                </columns>
+            </TableView>
+            <Label fx:id="editOutput" styleClass="example-output" text="Double-click a cell to edit it."/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <CheckBox fx:id="editableCheck" text="Editable" selected="true"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="Filtering and sorting with FilteredList and SortedList"
+             description="The items are wrapped in a FilteredList and a SortedList whose comparator is bound to the table's comparator, so sorting by column header still works.">
+        <VBox spacing="12">
+            <TextField fx:id="filterField" promptText="Filter by name, department or e-mail" prefWidth="320"
+                       maxWidth="-Infinity"/>
+            <TableView fx:id="filterTable" prefWidth="620" prefHeight="260">
+                <columns>
+                    <TableColumn fx:id="filterName" text="Name" prefWidth="160"/>
+                    <TableColumn fx:id="filterDepartment" text="Department" prefWidth="140"/>
+                    <TableColumn fx:id="filterEmail" text="E-mail" prefWidth="240"/>
+                </columns>
+            </TableView>
+            <Label fx:id="filterOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <CheckBox fx:id="activeOnly" text="Active persons only"/>
+            </VBox>
+        </options>
+    </Example>
+</DemoPage>

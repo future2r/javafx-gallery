@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.basicinput.RadioButtonController">
+
+    <Example title="A group of RadioButtons"
+             description="RadioButtons that share a ToggleGroup are mutually exclusive. The group is declared with fx:define in FXML.">
+        <VBox spacing="12">
+            <fx:define>
+                <ToggleGroup fx:id="optionGroup"/>
+            </fx:define>
+            <FlowPane fx:id="optionPane" hgap="16" vgap="8">
+                <RadioButton fx:id="option1" text="Option 1" toggleGroup="$optionGroup"/>
+                <RadioButton fx:id="option2" text="Option 2" toggleGroup="$optionGroup"/>
+                <RadioButton fx:id="option3" text="Option 3" toggleGroup="$optionGroup"/>
+            </FlowPane>
+            <Label fx:id="optionOutput" styleClass="example-output" text="Select an option."/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <CheckBox fx:id="disableOptions" text="Disable RadioButtons"/>
+                <Label text="Orientation" styleClass="options-title"/>
+                <ComboBox fx:id="orientation" maxWidth="Infinity"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="Two independent groups"
+             description="Each ToggleGroup keeps its own selection.">
+        <HBox spacing="32">
+            <fx:define>
+                <ToggleGroup fx:id="backgroundGroup"/>
+                <ToggleGroup fx:id="borderGroup"/>
+            </fx:define>
+            <VBox spacing="8">
+                <Label text="Background" styleClass="options-title"/>
+                <RadioButton text="Blue" userData="#3d8fd1" toggleGroup="$backgroundGroup" selected="true"/>
+                <RadioButton text="Orange" userData="#e5734b" toggleGroup="$backgroundGroup"/>
+                <RadioButton text="Green" userData="#56b16a" toggleGroup="$backgroundGroup"/>
+            </VBox>
+            <VBox spacing="8">
+                <Label text="Border" styleClass="options-title"/>
+                <RadioButton text="None" userData="transparent" toggleGroup="$borderGroup" selected="true"/>
+                <RadioButton text="Purple" userData="#b06ad1" toggleGroup="$borderGroup"/>
+                <RadioButton text="Gold" userData="#e0b000" toggleGroup="$borderGroup"/>
+            </VBox>
+            <Region fx:id="colorBox" minWidth="140" minHeight="100" prefWidth="140" prefHeight="100"
+                    maxWidth="140" maxHeight="100"/>
+        </HBox>
+    </Example>
+</DemoPage>

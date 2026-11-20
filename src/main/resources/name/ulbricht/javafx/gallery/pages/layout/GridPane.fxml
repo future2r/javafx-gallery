@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.layout.GridPaneController">
+
+    <Example title="A grid with row and column spans"
+             description="Children are placed with GridPane.columnIndex/rowIndex and can span several columns or rows. Column and row constraints let all cells grow evenly.">
+        <GridPane fx:id="spanGrid" styleClass="demo-area" hgap="8" vgap="8" prefWidth="480" prefHeight="240"
+                  maxWidth="-Infinity" maxHeight="-Infinity">
+            <columnConstraints>
+                <ColumnConstraints hgrow="ALWAYS" percentWidth="25"/>
+                <ColumnConstraints hgrow="ALWAYS" percentWidth="25"/>
+                <ColumnConstraints hgrow="ALWAYS" percentWidth="25"/>
+                <ColumnConstraints hgrow="ALWAYS" percentWidth="25"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints vgrow="ALWAYS" percentHeight="33.3"/>
+                <RowConstraints vgrow="ALWAYS" percentHeight="33.3"/>
+                <RowConstraints vgrow="ALWAYS" percentHeight="33.3"/>
+            </rowConstraints>
+            <Label text="0,0 – colspan 2" styleClass="demo-box" GridPane.columnIndex="0" GridPane.rowIndex="0"
+                   GridPane.columnSpan="2" maxWidth="Infinity" maxHeight="Infinity"/>
+            <Label text="2,0" styleClass="demo-box,alt-1" GridPane.columnIndex="2" GridPane.rowIndex="0"
+                   maxWidth="Infinity" maxHeight="Infinity"/>
+            <Label text="3,0 – rowspan 3" styleClass="demo-box,alt-2" GridPane.columnIndex="3" GridPane.rowIndex="0"
+                   GridPane.rowSpan="3" maxWidth="Infinity" maxHeight="Infinity"/>
+            <Label text="0,1 – rowspan 2" styleClass="demo-box,alt-3" GridPane.columnIndex="0" GridPane.rowIndex="1"
+                   GridPane.rowSpan="2" maxWidth="Infinity" maxHeight="Infinity"/>
+            <Label text="1,1 – 2×2" styleClass="demo-box" GridPane.columnIndex="1" GridPane.rowIndex="1"
+                   GridPane.columnSpan="2" GridPane.rowSpan="2" maxWidth="Infinity" maxHeight="Infinity"/>
+        </GridPane>
+        <options>
+            <VBox spacing="10">
+                <Label fx:id="hgapLabel" styleClass="options-title"/>
+                <Slider fx:id="hgap" min="0" max="30" value="8"/>
+                <Label fx:id="vgapLabel" styleClass="options-title"/>
+                <Slider fx:id="vgap" min="0" max="30" value="8"/>
+                <Label fx:id="paddingLabel" styleClass="options-title"/>
+                <Slider fx:id="padding" min="0" max="30" value="0"/>
+                <CheckBox fx:id="gridLines" text="Show grid lines"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="A form layout"
+             description="A typical use of GridPane: labels in the first column, input controls in a second column that grows with the available width.">
+        <GridPane fx:id="formGrid" hgap="10" vgap="10" prefWidth="460" maxWidth="-Infinity">
+            <columnConstraints>
+                <ColumnConstraints fx:id="labelColumn" minWidth="90" halignment="RIGHT"/>
+                <ColumnConstraints hgrow="ALWAYS"/>
+            </columnConstraints>
+            <Label text="Name:" GridPane.rowIndex="0"/>
+            <TextField promptText="Your name" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+            <Label text="E-mail:" GridPane.rowIndex="1"/>
+            <TextField promptText="name@example.com" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+            <Label text="Birthday:" GridPane.rowIndex="2"/>
+            <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+            <Label text="Comment:" GridPane.rowIndex="3" GridPane.valignment="TOP"/>
+            <TextArea prefRowCount="3" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+            <HBox spacing="8" alignment="CENTER_RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="4"
+                  GridPane.columnSpan="2">
+                <Button text="Cancel"/>
+                <Button text="Save" defaultButton="true"/>
+            </HBox>
+        </GridPane>
+        <options>
+            <VBox spacing="10">
+                <Label text="Label column halignment" styleClass="options-title"/>
+                <ComboBox fx:id="labelAlignment" maxWidth="Infinity"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="Adding children at runtime"
+             description="GridPane.add(node, column, row) places a new child in a cell; the grid grows as needed.">
+        <VBox spacing="12">
+            <GridPane fx:id="dynamicGrid" styleClass="demo-area" hgap="6" vgap="6" prefWidth="480" minHeight="120"
+                      maxWidth="-Infinity"/>
+            <Label fx:id="dynamicOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Label fx:id="columnsLabel" styleClass="options-title"/>
+                <Slider fx:id="columns" min="1" max="6" value="4" majorTickUnit="1" minorTickCount="0"
+                        snapToTicks="true" showTickMarks="true"/>
+                <HBox spacing="8">
+                    <Button text="Add" onAction="#onAddCell"/>
+                    <Button text="Remove" onAction="#onRemoveCell"/>
+                </HBox>
+            </VBox>
+        </options>
+    </Example>
+</DemoPage>

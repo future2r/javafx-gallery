@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.web.HTMLEditor?>
+<?import javafx.scene.web.WebView?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.text.HTMLEditorController">
+
+    <Example title="Rich text editing with HTMLEditor"
+             description="Format the text with the toolbars. getHtmlText() returns the document as HTML, setHtmlText() replaces it.">
+        <VBox spacing="12">
+            <HTMLEditor fx:id="editor" prefHeight="280" maxWidth="760"/>
+            <HBox spacing="8">
+                <Button text="Show HTML" onAction="#onShowHtml"/>
+                <Button text="Load sample" onAction="#onLoadSample"/>
+                <Button text="Clear" onAction="#onClear"/>
+            </HBox>
+            <TextArea fx:id="htmlSource" editable="false" wrapText="true" prefRowCount="6" maxWidth="760"
+                      promptText="Click &quot;Show HTML&quot; to see the generated markup."/>
+        </VBox>
+    </Example>
+
+    <Example title="Rendering the result in a WebView"
+             description="The HTML produced by the editor above can be displayed read-only with WebEngine.loadContent().">
+        <VBox spacing="12">
+            <Button text="Update preview" onAction="#onUpdatePreview"/>
+            <WebView fx:id="preview" prefHeight="200" maxWidth="760"/>
+            <Label fx:id="previewOutput" styleClass="example-output" text="Click &quot;Update preview&quot;."/>
+        </VBox>
+    </Example>
+</DemoPage>

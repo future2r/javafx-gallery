@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.chart.BubbleChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.charts.BubbleChartController">
+
+    <Example title="A BubbleChart with an extra value"
+             description="The extraValue of a data item is the bubble radius in axis units – here derived from the population. Click a bubble to inspect it.">
+        <VBox spacing="12">
+            <BubbleChart fx:id="countryChart" title="Wealth and health of nations" prefWidth="560"
+                         prefHeight="380">
+                <xAxis>
+                    <NumberAxis label="GDP per capita (thousand US$)" autoRanging="false" lowerBound="0"
+                                upperBound="90" tickUnit="10"/>
+                </xAxis>
+                <yAxis>
+                    <NumberAxis label="Life expectancy (years)" autoRanging="false" lowerBound="50"
+                                upperBound="90" tickUnit="5"/>
+                </yAxis>
+            </BubbleChart>
+            <Label fx:id="countryOutput" styleClass="example-output" text="Click a bubble."/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Label text="Title" styleClass="options-title"/>
+                <TextField fx:id="countryTitle"/>
+                <CheckBox fx:id="countryAnimated" text="Animated"/>
+                <CheckBox fx:id="countryLegend" text="Legend visible"/>
+                <Label text="Legend side" styleClass="options-title"/>
+                <ComboBox fx:id="countryLegendSide" maxWidth="Infinity"/>
+                <Label text="Bubble scale" styleClass="options-title"/>
+                <Slider fx:id="bubbleScale" min="0.05" max="0.5" value="0.2" showTickLabels="true"
+                        majorTickUnit="0.15"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="Moving bubbles"
+             description="A Timeline changes X, Y and extra value of every bubble; the animated chart moves them smoothly.">
+        <BubbleChart fx:id="liveChart" title="Random walk" prefWidth="560" prefHeight="340">
+            <xAxis>
+                <NumberAxis autoRanging="false" lowerBound="0" upperBound="100" tickUnit="20"/>
+            </xAxis>
+            <yAxis>
+                <NumberAxis autoRanging="false" lowerBound="0" upperBound="100" tickUnit="20"/>
+            </yAxis>
+        </BubbleChart>
+        <options>
+            <VBox spacing="10">
+                <CheckBox fx:id="liveRunning" text="Running" selected="true"/>
+            </VBox>
+        </options>
+    </Example>
+</DemoPage>

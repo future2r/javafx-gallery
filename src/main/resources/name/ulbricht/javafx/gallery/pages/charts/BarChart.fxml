@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.charts.BarChartController">
+
+    <Example title="A BarChart with several series"
+             description="Bars of the same category are grouped. barGap is the space between the bars of a group, categoryGap the space between groups.">
+        <VBox spacing="12">
+            <BarChart fx:id="revenueChart" title="Revenue by region" prefWidth="560" prefHeight="340">
+                <xAxis>
+                    <CategoryAxis label="Quarter"/>
+                </xAxis>
+                <yAxis>
+                    <NumberAxis fx:id="revenueYAxis" label="Revenue (million €)"/>
+                </yAxis>
+            </BarChart>
+            <Label fx:id="revenueOutput" styleClass="example-output" text="Click a bar."/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Label text="Title" styleClass="options-title"/>
+                <TextField fx:id="revenueTitle"/>
+                <Label text="Y axis label" styleClass="options-title"/>
+                <TextField fx:id="revenueYLabel"/>
+                <CheckBox fx:id="revenueAnimated" text="Animated"/>
+                <CheckBox fx:id="revenueLegend" text="Legend visible"/>
+                <Label text="Legend side" styleClass="options-title"/>
+                <ComboBox fx:id="revenueLegendSide" maxWidth="Infinity"/>
+                <Label text="Bar gap" styleClass="options-title"/>
+                <Slider fx:id="barGap" min="0" max="20" showTickLabels="true" majorTickUnit="5"/>
+                <Label text="Category gap" styleClass="options-title"/>
+                <Slider fx:id="categoryGap" min="0" max="60" showTickLabels="true" majorTickUnit="20"/>
+                <Button text="Randomize values" maxWidth="Infinity" onAction="#onRandomizeRevenue"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="A horizontal BarChart"
+             description="If the CategoryAxis is used as the Y axis, the bars are drawn horizontally.">
+        <BarChart fx:id="languageChart" title="Most used programming languages" prefWidth="560" prefHeight="340"
+                  legendVisible="false" animated="false">
+            <xAxis>
+                <NumberAxis label="Share of developers (%)"/>
+            </xAxis>
+            <yAxis>
+                <CategoryAxis/>
+            </yAxis>
+        </BarChart>
+        <options>
+            <VBox spacing="10">
+                <Label text="Order" styleClass="options-title"/>
+                <ComboBox fx:id="languageOrder" maxWidth="Infinity"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="Live updating values"
+             description="A Timeline changes the values every 1.5 seconds; the bars animate to their new height.">
+        <BarChart fx:id="loadChart" title="Server load" prefWidth="560" prefHeight="300">
+            <xAxis>
+                <CategoryAxis label="Server"/>
+            </xAxis>
+            <yAxis>
+                <NumberAxis label="Load (%)" autoRanging="false" lowerBound="0" upperBound="100" tickUnit="20"/>
+            </yAxis>
+        </BarChart>
+        <options>
+            <VBox spacing="10">
+                <CheckBox fx:id="loadRunning" text="Running" selected="true"/>
+            </VBox>
+        </options>
+    </Example>
+</DemoPage>

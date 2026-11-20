@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.basicinput.ChoiceBoxController">
+
+    <Example title="A simple ChoiceBox">
+        <VBox spacing="12">
+            <ChoiceBox fx:id="simpleChoice" prefWidth="160"/>
+            <Label fx:id="simpleOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <CheckBox fx:id="disableChoice" text="Disable ChoiceBox"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="A ChoiceBox with a StringConverter"
+             description="The items are Locale objects; the converter turns them into readable names.">
+        <VBox spacing="12">
+            <ChoiceBox fx:id="localeChoice" prefWidth="220"/>
+            <Label fx:id="localeOutput" styleClass="example-output"/>
+        </VBox>
+    </Example>
+
+    <Example title="A ChoiceBox with separators"
+             description="Separator instances in the item list are rendered as separators in the popup menu.">
+        <VBox spacing="12">
+            <ChoiceBox fx:id="separatorChoice" prefWidth="160"/>
+            <Label fx:id="separatorOutput" styleClass="example-output"/>
+        </VBox>
+    </Example>
+</DemoPage>

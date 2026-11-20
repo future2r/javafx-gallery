@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.layout.VBox?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.collections.TreeViewController">
+
+    <Example title="A TreeView with expandable nodes"
+             description="TreeItems can be expanded and collapsed with the mouse or the arrow keys. A cell factory adds folder and file icons.">
+        <VBox spacing="12">
+            <TreeView fx:id="fileTree" prefWidth="320" prefHeight="300" maxWidth="-Infinity"/>
+            <Label fx:id="fileOutput" styleClass="example-output" text="Select a node." wrapText="true"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <CheckBox fx:id="showRoot" text="Show root" selected="true"/>
+                <Button text="Expand all" maxWidth="Infinity" onAction="#onExpandAll"/>
+                <Button text="Collapse all" maxWidth="Infinity" onAction="#onCollapseAll"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="Lazy loading of child nodes"
+             description="The children of a TreeItem are created only when the item is expanded for the first time – useful for large or remote data.">
+        <VBox spacing="12">
+            <TreeView fx:id="lazyTree" prefWidth="320" prefHeight="260" maxWidth="-Infinity"/>
+            <Label fx:id="lazyOutput" styleClass="example-output" text="Expand a node to load its children."/>
+        </VBox>
+    </Example>
+
+    <Example title="A TreeView with check boxes"
+             description="CheckBoxTreeItem and CheckBoxTreeCell show a check box per node. Parent nodes reflect the state of their children (indeterminate if only some are selected) unless the items are independent.">
+        <VBox spacing="12">
+            <TreeView fx:id="checkTree" prefWidth="320" prefHeight="280" maxWidth="-Infinity"/>
+            <Label fx:id="checkOutput" styleClass="example-output" wrapText="true" maxWidth="420"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <CheckBox fx:id="independent" text="Independent items"/>
+            </VBox>
+        </options>
+    </Example>
+</DemoPage>

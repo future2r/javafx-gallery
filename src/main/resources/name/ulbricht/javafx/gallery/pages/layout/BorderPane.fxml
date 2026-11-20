@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.layout.BorderPaneController">
+
+    <Example title="The five regions of a BorderPane"
+             description="Top and bottom get their preferred height and the full width, left and right their preferred width and the remaining height; center gets all the remaining space. Empty regions take no space.">
+        <BorderPane fx:id="regionsPane" styleClass="demo-area" prefWidth="480" prefHeight="260" maxWidth="-Infinity"
+                    maxHeight="-Infinity">
+            <top>
+                <Label fx:id="topBox" text="Top" styleClass="demo-box" maxWidth="Infinity"/>
+            </top>
+            <left>
+                <Label fx:id="leftBox" text="Left" styleClass="demo-box,alt-1" maxHeight="Infinity"/>
+            </left>
+            <center>
+                <Label fx:id="centerBox" text="Center" styleClass="demo-box,alt-2" maxWidth="Infinity"
+                       maxHeight="Infinity"/>
+            </center>
+            <right>
+                <Label fx:id="rightBox" text="Right" styleClass="demo-box,alt-1" maxHeight="Infinity"/>
+            </right>
+            <bottom>
+                <Label fx:id="bottomBox" text="Bottom" styleClass="demo-box,alt-3" maxWidth="Infinity"/>
+            </bottom>
+        </BorderPane>
+        <options>
+            <VBox spacing="10">
+                <Label text="Regions" styleClass="options-title"/>
+                <CheckBox fx:id="showTop" text="Top" selected="true"/>
+                <CheckBox fx:id="showLeft" text="Left" selected="true"/>
+                <CheckBox fx:id="showCenter" text="Center" selected="true"/>
+                <CheckBox fx:id="showRight" text="Right" selected="true"/>
+                <CheckBox fx:id="showBottom" text="Bottom" selected="true"/>
+                <Label fx:id="marginLabel" styleClass="options-title"/>
+                <Slider fx:id="margin" min="0" max="20" value="0"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="A typical application layout"
+             description="Menu and toolbar on top, a navigation list on the left, the main content in the center and a status bar at the bottom.">
+        <BorderPane styleClass="demo-area" prefWidth="560" prefHeight="300" maxWidth="-Infinity" maxHeight="-Infinity">
+            <top>
+                <VBox>
+                    <MenuBar>
+                        <Menu text="File">
+                            <MenuItem text="New"/>
+                            <MenuItem text="Open…"/>
+                            <MenuItem text="Save"/>
+                        </Menu>
+                        <Menu text="Edit">
+                            <MenuItem text="Cut"/>
+                            <MenuItem text="Copy"/>
+                            <MenuItem text="Paste"/>
+                        </Menu>
+                        <Menu text="Help">
+                            <MenuItem text="About"/>
+                        </Menu>
+                    </MenuBar>
+                    <ToolBar>
+                        <Button text="New"/>
+                        <Button text="Open"/>
+                        <Button text="Save"/>
+                    </ToolBar>
+                </VBox>
+            </top>
+            <left>
+                <ListView fx:id="navigationList" prefWidth="130"/>
+            </left>
+            <center>
+                <TextArea fx:id="editor" wrapText="true"/>
+            </center>
+            <bottom>
+                <HBox spacing="16">
+                    <padding>
+                        <Insets top="4" right="8" bottom="4" left="8"/>
+                    </padding>
+                    <Label fx:id="statusLabel" text="Ready"/>
+                </HBox>
+            </bottom>
+        </BorderPane>
+    </Example>
+</DemoPage>

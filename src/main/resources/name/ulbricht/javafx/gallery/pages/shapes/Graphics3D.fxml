@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.shapes.Graphics3DController">
+
+    <Example title="Shapes, camera and lights in a SubScene"
+             description="A SubScene with depth buffer and antialiasing shows a Box, a Sphere, a Cylinder and a MeshView (pyramid) lit by a PointLight and an AmbientLight. Drag with the mouse to rotate.">
+        <VBox spacing="12">
+            <StackPane fx:id="shapesHolder" maxWidth="-Infinity" maxHeight="-Infinity"/>
+            <Label fx:id="shapesOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Label text="Rotate X" styleClass="options-title"/>
+                <Slider fx:id="rotateX" min="-180" max="180" value="-20" showTickLabels="true" majorTickUnit="90"/>
+                <Label text="Rotate Y" styleClass="options-title"/>
+                <Slider fx:id="rotateY" min="-180" max="180" value="30" showTickLabels="true" majorTickUnit="90"/>
+                <Label text="Camera distance" styleClass="options-title"/>
+                <Slider fx:id="cameraDistance" min="400" max="1600" value="900" showTickLabels="true"
+                        majorTickUnit="400"/>
+                <Label text="Draw mode" styleClass="options-title"/>
+                <ComboBox fx:id="drawMode" maxWidth="Infinity"/>
+                <Label text="Cull face" styleClass="options-title"/>
+                <ComboBox fx:id="cullFace" maxWidth="Infinity"/>
+                <CheckBox fx:id="pointLightOn" text="Point light" selected="true"/>
+                <CheckBox fx:id="ambientLightOn" text="Ambient light" selected="true"/>
+                <CheckBox fx:id="autoRotate" text="Auto rotate"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="PhongMaterial"
+             description="Diffuse color only, a specular highlight with adjustable power, and a diffuse map (a generated checkerboard texture).">
+        <StackPane fx:id="materialsHolder" maxWidth="-Infinity" maxHeight="-Infinity"/>
+        <options>
+            <VBox spacing="10">
+                <Label text="Specular power" styleClass="options-title"/>
+                <Slider fx:id="specularPower" min="2" max="128" value="32" showTickLabels="true" majorTickUnit="42"/>
+                <Label text="Light color" styleClass="options-title"/>
+                <ColorPicker fx:id="lightColor" maxWidth="Infinity"/>
+                <Label text="Light position X" styleClass="options-title"/>
+                <Slider fx:id="lightX" min="-600" max="600" value="-300" showTickLabels="true" majorTickUnit="300"/>
+                <Label text="Rotate spheres" styleClass="options-title"/>
+                <Slider fx:id="sphereRotation" min="0" max="360" value="0" showTickLabels="true" majorTickUnit="90"/>
+            </VBox>
+        </options>
+    </Example>
+</DemoPage>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.dialogs.PopupController">
+
+    <Example title="A flyout card"
+             description="A Popup is an undecorated window that holds any content. With autoHide it closes when the user clicks elsewhere, hideOnEscape closes it with ESC.">
+        <VBox spacing="12">
+            <Button fx:id="flyoutButton" text="Empty cart" onAction="#onShowFlyout"/>
+            <Label fx:id="flyoutOutput" styleClass="example-output" text="Click the button."/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <CheckBox fx:id="autoHide" text="Auto hide" selected="true"/>
+                <CheckBox fx:id="hideOnEscape" text="Hide on ESC" selected="true"/>
+                <CheckBox fx:id="consumeAutoHiding" text="Consume auto-hiding events" selected="true"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="A teaching tip next to its target"
+             description="The anchorLocation decides which corner of the popup is placed at the given screen coordinates, which makes it easy to place a popup on any side of a node.">
+        <VBox spacing="12">
+            <Button fx:id="tipTarget" text="Show teaching tip" onAction="#onShowTip"/>
+            <Label fx:id="tipOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Label text="Placement" styleClass="options-title"/>
+                <ComboBox fx:id="placement" maxWidth="Infinity"/>
+            </VBox>
+        </options>
+    </Example>
+</DemoPage>

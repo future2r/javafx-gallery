@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="name.ulbricht.javafx.gallery.shell.SettingsController"
+      styleClass="page, settings-page">
+    <fx:define>
+        <ToggleGroup fx:id="themeGroup"/>
+    </fx:define>
+
+    <Label text="Settings" styleClass="page-title"/>
+
+    <VBox styleClass="settings-card" spacing="10">
+        <Label text="Theme" styleClass="example-title"/>
+        <Label text="Select which app theme to display. Dark mode is based on Modena with adjusted colors."
+               wrapText="true" styleClass="example-description"/>
+        <RadioButton fx:id="lightTheme" toggleGroup="$themeGroup"/>
+        <RadioButton fx:id="darkTheme" toggleGroup="$themeGroup"/>
+        <RadioButton fx:id="systemTheme" toggleGroup="$themeGroup"/>
+        <Label fx:id="systemSchemeLabel" styleClass="example-description"/>
+    </VBox>
+
+    <VBox styleClass="settings-card" spacing="10">
+        <Label text="About" styleClass="example-title"/>
+        <GridPane hgap="16" vgap="6">
+            <columnConstraints>
+                <ColumnConstraints minWidth="120"/>
+                <ColumnConstraints/>
+            </columnConstraints>
+            <Label text="Java" GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="settings-key"/>
+            <Label fx:id="javaVersion" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <Label text="JavaFX" GridPane.rowIndex="1" GridPane.columnIndex="0" styleClass="settings-key"/>
+            <Label fx:id="javafxVersion" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <Label text="Operating system" GridPane.rowIndex="2" GridPane.columnIndex="0" styleClass="settings-key"/>
+            <Label fx:id="operatingSystem" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+        </GridPane>
+        <Label text="Settings (theme, window position and the last visited page) are stored with java.util.prefs."
+               wrapText="true" styleClass="example-description"/>
+    </VBox>
+</VBox>

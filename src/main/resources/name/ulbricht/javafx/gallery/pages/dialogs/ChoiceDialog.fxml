@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.dialogs.ChoiceDialogController">
+
+    <Example title="Pick one of several strings"
+             description="A ChoiceDialog shows its choices in a ChoiceBox and returns the selected item, or an empty Optional when cancelled.">
+        <VBox spacing="12">
+            <HBox spacing="12" alignment="CENTER_LEFT">
+                <Button text="Choose a color…" onAction="#onChooseColor"/>
+                <Region fx:id="colorSwatch" prefWidth="48" prefHeight="24" minHeight="24"/>
+            </HBox>
+            <Label fx:id="colorOutput" styleClass="example-output" text="No color chosen yet."/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Label text="Default choice" styleClass="options-title"/>
+                <ComboBox fx:id="defaultChoice" maxWidth="Infinity"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="Choices of any type"
+             description="ChoiceDialog is generic. Here it lists the DayOfWeek enum; the toString() of each item is shown.">
+        <VBox spacing="12">
+            <Button text="Pick a meeting day…" onAction="#onChooseDay"/>
+            <Label fx:id="dayOutput" styleClass="example-output"/>
+        </VBox>
+    </Example>
+</DemoPage>

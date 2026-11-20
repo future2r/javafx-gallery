@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.dialogs.DialogController">
+
+    <Example title="A login dialog with a result converter"
+             description="The dialog content is a form. The Login button stays disabled until both fields are valid, and a result converter turns the clicked button into a Credentials object.">
+        <VBox spacing="12">
+            <Button text="Sign in…" onAction="#onLogin"/>
+            <Label fx:id="loginOutput" styleClass="example-output" text="Not signed in."/>
+        </VBox>
+    </Example>
+
+    <Example title="Modality, resizing and custom buttons"
+             description="A Dialog&lt;ButtonType&gt; needs no result converter. Dialogs can be modal or non-modal and optionally resizable.">
+        <VBox spacing="12">
+            <Button text="Show dialog" onAction="#onShowOptionsDialog"/>
+            <Label fx:id="optionsOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Label text="Modality" styleClass="options-title"/>
+                <ComboBox fx:id="modality" maxWidth="Infinity"/>
+                <CheckBox fx:id="resizable" text="Resizable"/>
+                <CheckBox fx:id="showHelpButton" text="Show Help button" selected="true"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="Validating before closing"
+             description="An event filter on the OK button consumes the action event when the input is invalid, so the dialog stays open and can show an error.">
+        <VBox spacing="12">
+            <Button text="Subscribe to newsletter…" onAction="#onSubscribe"/>
+            <Label fx:id="subscribeOutput" styleClass="example-output"/>
+        </VBox>
+    </Example>
+</DemoPage>

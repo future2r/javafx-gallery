@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.layout.VBox?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.basicinput.SpinnerController">
+
+    <Example title="An integer Spinner"
+             description="IntegerSpinnerValueFactory from 0 to 100 in steps of 5. Arrow keys and the mouse wheel work, too.">
+        <VBox spacing="12">
+            <Spinner fx:id="intSpinner" prefWidth="140"/>
+            <Label fx:id="intOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <CheckBox fx:id="disableInt" text="Disable Spinner"/>
+                <CheckBox fx:id="wrapInt" text="Wrap around"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="A double Spinner" description="DoubleSpinnerValueFactory from 0 to 10 in steps of 0.25.">
+        <VBox spacing="12">
+            <Spinner fx:id="doubleSpinner" prefWidth="140"/>
+            <Label fx:id="doubleOutput" styleClass="example-output"/>
+        </VBox>
+    </Example>
+
+    <Example title="A Spinner over a list of values"
+             description="ListSpinnerValueFactory steps through arbitrary items – here the days of the week, wrapping around.">
+        <VBox spacing="12">
+            <Spinner fx:id="listSpinner" prefWidth="160"/>
+            <Label fx:id="listOutput" styleClass="example-output"/>
+        </VBox>
+    </Example>
+
+    <Example title="An editable Spinner with different arrow layouts"
+             description="Type a number and press ENTER or move the focus away to commit it. Invalid input is reverted.">
+        <VBox spacing="12">
+            <Spinner fx:id="editableSpinner" editable="true" prefWidth="160"/>
+            <Label fx:id="editableOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <CheckBox fx:id="editable" text="Editable" selected="true"/>
+                <Label text="Arrow style class" styleClass="options-title"/>
+                <ComboBox fx:id="arrowStyle" maxWidth="Infinity"/>
+            </VBox>
+        </options>
+    </Example>
+</DemoPage>

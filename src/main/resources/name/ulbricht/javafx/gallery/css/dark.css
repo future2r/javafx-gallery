@@ -1,0 +1,83 @@
+/*
+ * Dark mode on top of Modena. Modena derives almost all colors from a few base colors, so overriding them
+ * is enough for most controls; the rest are targeted fixes for hard-coded light colors.
+ */
+
+.root {
+    -fx-base: #3a3b3f;
+    -fx-background: #202124;
+    -fx-control-inner-background: #2a2b2e;
+    -fx-control-inner-background-alt: #303134;
+    -fx-accent: #3f8fdc;
+    -fx-default-button: #2f6faa;
+    -fx-focus-color: #5aa9f5;
+    -fx-faint-focus-color: #5aa9f522;
+    -fx-selection-bar-non-focused: #46484d;
+    /* Modena derives the mark color from -fx-color, which turns dark on the brighter hover base; keep it light. */
+    -fx-mark-color: #ececec;
+    -fx-mark-highlight-color: transparent;
+
+    -gallery-sidebar-bg: #1a1b1d;
+    -gallery-card-bg: #2a2b2e;
+    -gallery-card-border: #3d3f43;
+    -gallery-options-bg: #26272a;
+}
+
+/* Links */
+.hyperlink {
+    -fx-text-fill: #6fb6ff;
+}
+
+.hyperlink:visited {
+    -fx-text-fill: #b99cf0;
+}
+
+/* Tooltips */
+.tooltip {
+    -fx-background-color: #3d3f43;
+    -fx-text-fill: #f0f0f0;
+}
+
+/* Charts */
+.chart-plot-background {
+    -fx-background-color: #26272a;
+}
+
+.chart-vertical-grid-lines, .chart-horizontal-grid-lines {
+    -fx-stroke: #3d3f43;
+}
+
+.chart-alternative-row-fill, .chart-alternative-column-fill {
+    -fx-fill: #2c2d31;
+}
+
+.chart-legend {
+    -fx-background-color: #2a2b2e;
+}
+
+.chart-vertical-zero-line, .chart-horizontal-zero-line {
+    -fx-stroke: #8a8c90;
+}
+
+/* Text input placeholders */
+.text-input {
+    -fx-prompt-text-fill: #8a8c90;
+}
+
+/* Sliders: a lighter track and readable tick marks on dark cards */
+.slider .track {
+    -fx-background-color: transparent, #55575c, #4a4c51;
+}
+
+.slider .axis {
+    -fx-tick-label-fill: #c8c9cc;
+}
+
+.axis-tick-mark, .axis-minor-tick-mark {
+    -fx-stroke: #9a9ca0;
+}
+
+/* Progress */
+.progress-bar > .track {
+    -fx-background-color: #3d3f43;
+}

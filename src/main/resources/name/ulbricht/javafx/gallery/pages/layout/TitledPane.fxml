@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.layout.TitledPaneController">
+
+    <Example title="A collapsible TitledPane"
+             description="Click the title to expand or collapse the content. The transition can be animated.">
+        <VBox spacing="12">
+            <TitledPane fx:id="basicPane" text="Advanced settings" prefWidth="340" maxWidth="-Infinity">
+                <VBox spacing="8">
+                    <CheckBox text="Enable logging" selected="true"/>
+                    <CheckBox text="Send anonymous usage statistics"/>
+                    <CheckBox text="Check for updates automatically" selected="true"/>
+                </VBox>
+            </TitledPane>
+            <Label fx:id="basicOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <CheckBox fx:id="expanded" text="Expanded" selected="true"/>
+                <CheckBox fx:id="collapsible" text="Collapsible" selected="true"/>
+                <CheckBox fx:id="animated" text="Animated" selected="true"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="A non-collapsible TitledPane as group box"
+             description="With collapsible set to false, a TitledPane is a simple group box with a header.">
+        <TitledPane text="Shipping address" collapsible="false" prefWidth="380" maxWidth="-Infinity">
+            <GridPane hgap="10" vgap="8">
+                <Label text="Street:" GridPane.rowIndex="0"/>
+                <TextField GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.hgrow="ALWAYS"/>
+                <Label text="City:" GridPane.rowIndex="1"/>
+                <TextField GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <Label text="Country:" GridPane.rowIndex="2"/>
+                <ComboBox fx:id="country" GridPane.columnIndex="1" GridPane.rowIndex="2" maxWidth="Infinity"/>
+            </GridPane>
+        </TitledPane>
+    </Example>
+
+    <Example title="A TitledPane with a graphic in the header"
+             description="The header can show any node as graphic, here a CheckBox that enables or disables the content.">
+        <VBox spacing="12">
+            <TitledPane fx:id="graphicPane" text="Power saving" prefWidth="340" maxWidth="-Infinity">
+                <graphic>
+                    <CheckBox fx:id="powerSaving" selected="true"/>
+                </graphic>
+                <VBox fx:id="powerSavingContent" spacing="8">
+                    <fx:define>
+                        <ToggleGroup fx:id="powerMode"/>
+                    </fx:define>
+                    <RadioButton text="Balanced" toggleGroup="$powerMode" selected="true"/>
+                    <RadioButton text="Maximum battery life" toggleGroup="$powerMode"/>
+                    <Label text="Screen brightness"/>
+                    <Slider value="60"/>
+                </VBox>
+            </TitledPane>
+            <Label fx:id="graphicOutput" styleClass="example-output"/>
+        </VBox>
+    </Example>
+</DemoPage>

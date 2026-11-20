@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.StackedAreaChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.charts.AreaChartController">
+
+    <Example title="An AreaChart with overlapping series"
+             description="Every series fills the area between its line and the axis. Randomize the data to see the animation.">
+        <VBox spacing="12">
+            <AreaChart fx:id="visitorsChart" title="Website visitors" prefWidth="560" prefHeight="340">
+                <xAxis>
+                    <NumberAxis label="Month" autoRanging="false" lowerBound="1" upperBound="12" tickUnit="1"/>
+                </xAxis>
+                <yAxis>
+                    <NumberAxis label="Visitors (thousands)"/>
+                </yAxis>
+            </AreaChart>
+            <Label fx:id="visitorsOutput" styleClass="example-output" text="Click a data point."/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Label text="Title" styleClass="options-title"/>
+                <TextField fx:id="visitorsTitle"/>
+                <CheckBox fx:id="visitorsAnimated" text="Animated"/>
+                <CheckBox fx:id="visitorsSymbols" text="Create symbols"/>
+                <CheckBox fx:id="visitorsLegend" text="Legend visible"/>
+                <Label text="Legend side" styleClass="options-title"/>
+                <ComboBox fx:id="visitorsLegendSide" maxWidth="Infinity"/>
+                <Button text="Randomize data" maxWidth="Infinity" onAction="#onRandomize"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="A StackedAreaChart"
+             description="StackedAreaChart stacks the series on top of each other, so the upper edge shows the total. Toggle the series to add or remove them.">
+        <StackedAreaChart fx:id="stackedChart" title="Energy consumption by sector" prefWidth="560" prefHeight="340"
+                          animated="false">
+            <xAxis>
+                <NumberAxis label="Year" autoRanging="false" lowerBound="2015" upperBound="2024" tickUnit="1"
+                            forceZeroInRange="false"/>
+            </xAxis>
+            <yAxis>
+                <NumberAxis label="Consumption (TWh)"/>
+            </yAxis>
+        </StackedAreaChart>
+        <options>
+            <VBox spacing="10">
+                <Label text="Series" styleClass="options-title"/>
+                <CheckBox fx:id="showIndustry" text="Industry" selected="true"/>
+                <CheckBox fx:id="showHouseholds" text="Households" selected="true"/>
+                <CheckBox fx:id="showTransport" text="Transport" selected="true"/>
+                <CheckBox fx:id="showServices" text="Services" selected="true"/>
+                <CheckBox fx:id="stackedSymbols" text="Create symbols"/>
+            </VBox>
+        </options>
+    </Example>
+</DemoPage>

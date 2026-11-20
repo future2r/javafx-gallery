@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.status.ProgressBarController">
+
+    <Example title="A determinate ProgressBar"
+             description="The progress is a value between 0 and 1. Here it is bound to the slider in the options panel.">
+        <VBox spacing="12">
+            <ProgressBar fx:id="determinateBar" prefWidth="320"/>
+            <Label fx:id="determinateOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Label text="Progress" styleClass="options-title"/>
+                <Slider fx:id="progress" min="0" max="100" value="40"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="An indeterminate ProgressBar"
+             description="A progress of -1 (ProgressBar.INDETERMINATE_PROGRESS) shows an animation for operations of unknown duration.">
+        <ProgressBar fx:id="indeterminateBar" prefWidth="320"/>
+        <options>
+            <VBox spacing="10">
+                <CheckBox fx:id="indeterminate" text="Indeterminate" selected="true"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="Showing the progress of a background Task"
+             description="The progress and message properties of a javafx.concurrent.Task are updated from a background thread and can be bound directly to the UI.">
+        <VBox spacing="12">
+            <ProgressBar fx:id="taskBar" prefWidth="320" progress="0"/>
+            <Label fx:id="taskMessage" text="Not started."/>
+            <HBox spacing="8">
+                <Button fx:id="startButton" text="Start" onAction="#onStart"/>
+                <Button fx:id="cancelButton" text="Cancel" onAction="#onCancel" disable="true"/>
+            </HBox>
+            <Label fx:id="taskOutput" styleClass="example-output"/>
+        </VBox>
+    </Example>
+</DemoPage>

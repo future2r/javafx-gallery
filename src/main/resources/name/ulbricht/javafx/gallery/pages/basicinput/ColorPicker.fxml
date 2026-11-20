@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.basicinput.ColorPickerController">
+
+    <Example title="A simple ColorPicker" description="The selected color fills the rectangle.">
+        <VBox spacing="12">
+            <HBox spacing="16">
+                <ColorPicker fx:id="simplePicker"/>
+                <Rectangle fx:id="simpleSwatch" width="120" height="60" arcWidth="8" arcHeight="8"/>
+            </HBox>
+            <Label fx:id="simpleOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <CheckBox fx:id="disablePicker" text="Disable ColorPicker"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="ColorPicker appearance"
+             description="Besides the default combo-box look, the style classes &quot;button&quot; and &quot;split-button&quot; change the appearance.">
+        <VBox spacing="12">
+            <ColorPicker fx:id="stylePicker"/>
+            <Label fx:id="styleOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Label text="Style" styleClass="options-title"/>
+                <ComboBox fx:id="pickerStyle" maxWidth="Infinity"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="Predefined custom colors"
+             description="Colors added to getCustomColors() appear in the &quot;Custom colors&quot; section of the palette.">
+        <HBox spacing="16">
+            <ColorPicker fx:id="customPicker"/>
+            <Rectangle fx:id="customSwatch" width="120" height="60" arcWidth="8" arcHeight="8"/>
+        </HBox>
+    </Example>
+</DemoPage>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.styling.TimelineController">
+
+    <Example title="KeyFrames and KeyValues"
+             description="One Timeline animates position, radius, fill color and opacity of a circle through three KeyFrames. Each KeyValue carries its own interpolator; the rate scales the playback speed.">
+        <VBox spacing="12">
+            <Pane fx:id="keyFrameStage" styleClass="demo-area" prefWidth="560" prefHeight="200" minWidth="560"
+                  minHeight="200" maxWidth="-Infinity" maxHeight="-Infinity"/>
+            <HBox spacing="8">
+                <Button text="Play" onAction="#onPlay"/>
+                <Button text="Pause" onAction="#onPause"/>
+                <Button text="Stop" onAction="#onStop"/>
+            </HBox>
+            <Label fx:id="keyFrameOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Label text="Interpolator" styleClass="options-title"/>
+                <ComboBox fx:id="interpolator" maxWidth="Infinity"/>
+                <Label text="Rate" styleClass="options-title"/>
+                <Slider fx:id="rate" min="-2" max="3" value="1" showTickLabels="true" majorTickUnit="1"/>
+                <CheckBox fx:id="autoReverse" text="Auto reverse" selected="true"/>
+                <CheckBox fx:id="indefinite" text="Repeat indefinitely" selected="true"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="A clock and a stopwatch driven by Timelines"
+             description="A KeyFrame with an event handler and cycle count INDEFINITE runs code periodically on the JavaFX Application Thread.">
+        <VBox spacing="12">
+            <Label fx:id="clockLabel" style="-fx-font-size: 36px; -fx-font-weight: bold;"/>
+            <Label fx:id="stopwatchLabel" style="-fx-font-size: 24px;" text="00:00.0"/>
+            <HBox spacing="8">
+                <Button fx:id="stopwatchButton" text="Start" onAction="#onStartStopwatch"/>
+                <Button text="Reset" onAction="#onResetStopwatch"/>
+            </HBox>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <CheckBox fx:id="showSeconds" text="Show seconds" selected="true"/>
+                <CheckBox fx:id="twentyFourHours" text="24-hour format" selected="true"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="AnimationTimer"
+             description="An AnimationTimer is called once per frame with a nanosecond timestamp – ideal for game loops and physics. Here it moves bouncing balls on a Canvas.">
+        <VBox spacing="12">
+            <Canvas fx:id="ballCanvas" width="560" height="260"/>
+            <Label fx:id="fpsOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <CheckBox fx:id="timerRunning" text="Running" selected="true"/>
+                <Label text="Number of balls" styleClass="options-title"/>
+                <Slider fx:id="ballCount" min="1" max="60" value="12" showTickLabels="true" majorTickUnit="20"/>
+                <CheckBox fx:id="gravity" text="Gravity" selected="true"/>
+            </VBox>
+        </options>
+    </Example>
+</DemoPage>

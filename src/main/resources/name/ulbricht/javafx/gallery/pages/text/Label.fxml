@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.text.LabelController">
+
+    <Example title="A Label with wrapping text">
+        <Label fx:id="wrapLabel" prefWidth="360" maxWidth="360" styleClass="demo-area" style="-fx-padding: 10;"
+               text="Labels display read-only text. When wrapText is enabled, long text is wrapped at word boundaries to fit the available width; the text alignment decides how the lines are aligned to each other."/>
+        <options>
+            <VBox spacing="10">
+                <CheckBox fx:id="wrapText" text="Wrap text" selected="true"/>
+                <Label text="Text alignment" styleClass="options-title"/>
+                <ComboBox fx:id="textAlignment" maxWidth="Infinity"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="A Label with a graphic">
+        <VBox spacing="12">
+            <Label fx:id="graphicLabel" text="Settings"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Label text="Content display" styleClass="options-title"/>
+                <ComboBox fx:id="contentDisplay" maxWidth="Infinity"/>
+                <Label fx:id="gapTitle" styleClass="options-title"/>
+                <Slider fx:id="graphicTextGap" min="0" max="30" value="4"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="Labels with mnemonics for other controls"
+             description="With labelFor and mnemonicParsing, pressing ALT plus the underlined letter moves the focus to the associated field (ALT+N, ALT+E).">
+        <GridPane hgap="10" vgap="10">
+            <Label fx:id="nameLabel" text="_Name:" mnemonicParsing="true" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="nameField" promptText="Your name" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <Label fx:id="emailLabel" text="_Email:" mnemonicParsing="true" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextField fx:id="emailField" promptText="name@example.com" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+        </GridPane>
+    </Example>
+
+    <Example title="Text overrun"
+             description="If the text does not fit, it is truncated according to textOverrun using the ellipsis string.">
+        <VBox spacing="12">
+            <Label fx:id="overrunLabel" text="This is a rather long sentence that will not fit into a narrow label."/>
+            <Label fx:id="overrunOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Label text="Width" styleClass="options-title"/>
+                <Slider fx:id="overrunWidth" min="40" max="460" value="200"/>
+                <Label text="Text overrun" styleClass="options-title"/>
+                <ComboBox fx:id="textOverrun" maxWidth="Infinity"/>
+                <Label text="Ellipsis string" styleClass="options-title"/>
+                <TextField fx:id="ellipsisString" text="…"/>
+            </VBox>
+        </options>
+    </Example>
+</DemoPage>

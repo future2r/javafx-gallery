@@ -1,0 +1,264 @@
+/*
+ * Gallery stylesheet on top of Modena. Colors are defined as looked-up colors on .root,
+ * so that dark.css only needs to override them.
+ */
+
+.root {
+    /*
+     * Constants instead of derive(-fx-background, …): cells set -fx-background to the inner background, and
+     * the sidebar tree uses -gallery-sidebar-bg as inner background – a derived value would be circular.
+     */
+    -gallery-sidebar-bg: #ececec;
+    -gallery-card-bg: #fcfcfc;
+    -gallery-card-border: #d7d7d7;
+    -gallery-options-bg: #f8f8f8;
+    -gallery-subtle-text: ladder(-fx-background, #b8b8b8 49%, #5f5f5f 50%);
+    -gallery-icon: -fx-accent;
+    -gallery-demo-fill: #3d8fd1;
+    -gallery-demo-fill-2: #e5734b;
+    -gallery-demo-fill-3: #56b16a;
+    -gallery-demo-fill-4: #b06ad1;
+}
+
+/* ---- Shell ------------------------------------------------------------------------------------------ */
+
+.title-bar {
+    -fx-padding: 6 12 6 8;
+    -fx-background-color: -gallery-sidebar-bg;
+    -fx-border-color: transparent transparent -gallery-card-border transparent;
+}
+
+.app-title {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+.title-separator, .title-page {
+    -fx-text-fill: -gallery-subtle-text;
+}
+
+.back-button {
+    -fx-background-color: transparent;
+    -fx-padding: 6 8;
+}
+
+.back-button:hover {
+    -fx-background-color: -fx-shadow-highlight-color, derive(-gallery-sidebar-bg, -8%);
+}
+
+.back-button:disabled .icon {
+    -fx-opacity: 0.4;
+}
+
+.sidebar {
+    -fx-padding: 12 8 8 8;
+    -fx-background-color: -gallery-sidebar-bg;
+    -fx-border-color: transparent -gallery-card-border transparent transparent;
+}
+
+.sidebar .nav-tree {
+    -fx-control-inner-background: -gallery-sidebar-bg;
+    -fx-control-inner-background-alt: -gallery-sidebar-bg;
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.nav-tree .tree-cell {
+    -fx-padding: 6 6 6 4;
+    -fx-graphic-text-gap: 10;
+    -fx-background-radius: 4;
+}
+
+.nav-tree .tree-cell.nav-category {
+    -fx-font-weight: bold;
+}
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-padding: 8 10;
+    -fx-graphic-text-gap: 10;
+}
+
+.nav-button:hover {
+    -fx-background-color: derive(-gallery-sidebar-bg, -8%);
+}
+
+.content-host {
+    -fx-background-color: -fx-background;
+}
+
+.page-scroller, .page-scroller > .viewport {
+    -fx-background-color: -fx-background;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.icon {
+    -fx-background-color: -gallery-icon;
+}
+
+/* ---- Pages ------------------------------------------------------------------------------------------ */
+
+.page {
+    -fx-padding: 24 36 36 36;
+    -fx-spacing: 28;
+}
+
+.hero-title {
+    -fx-font-size: 34px;
+    -fx-font-weight: bold;
+}
+
+.page-title {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+}
+
+.page-category {
+    -fx-text-fill: -gallery-subtle-text;
+}
+
+.page-description {
+    -fx-font-size: 14px;
+}
+
+.section-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-padding: 8 0 -12 0;
+}
+
+.docs-link {
+    -fx-padding: 4 0 0 0;
+    -fx-border-width: 0;
+}
+
+/* ---- Examples ---------------------------------------------------------------------------------------- */
+
+.example {
+    -fx-spacing: 8;
+}
+
+.example-title {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}
+
+.example-description {
+    -fx-text-fill: -gallery-subtle-text;
+}
+
+.example-card, .settings-card {
+    -fx-background-color: -gallery-card-border, -gallery-card-bg;
+    -fx-background-insets: 0, 1;
+    -fx-background-radius: 6, 5;
+}
+
+.settings-card {
+    -fx-padding: 16;
+    -fx-max-width: 760;
+}
+
+.example-content {
+    -fx-padding: 20;
+}
+
+.example-options {
+    -fx-padding: 16;
+    -fx-min-width: 220;
+    -fx-pref-width: 260;
+    -fx-max-width: 260;
+    -fx-background-color: -gallery-card-border, -gallery-options-bg;
+    -fx-background-insets: 1, 1 1 1 2;
+    -fx-background-radius: 0 5 5 0, 0 5 5 0;
+}
+
+.example-options .options-title {
+    -fx-font-weight: bold;
+}
+
+/* Label showing event output of an example */
+.example-output {
+    -fx-text-fill: -gallery-subtle-text;
+    -fx-font-style: italic;
+}
+
+/* Bordered helper box used by layout demos */
+.demo-box {
+    -fx-background-color: -gallery-demo-fill;
+    -fx-background-radius: 4;
+    -fx-text-fill: white;
+    -fx-alignment: center;
+    -fx-padding: 8 12;
+    -fx-font-weight: bold;
+}
+
+.demo-box.alt-1 {
+    -fx-background-color: -gallery-demo-fill-2;
+}
+
+.demo-box.alt-2 {
+    -fx-background-color: -gallery-demo-fill-3;
+}
+
+.demo-box.alt-3 {
+    -fx-background-color: -gallery-demo-fill-4;
+}
+
+.demo-area {
+    -fx-border-color: -gallery-card-border;
+    -fx-border-style: dashed;
+    -fx-border-width: 1;
+}
+
+/* ---- Tiles ------------------------------------------------------------------------------------------- */
+
+.tile {
+    -fx-background-color: -gallery-card-border, -gallery-card-bg;
+    -fx-background-insets: 0, 1;
+    -fx-background-radius: 6, 5;
+    -fx-padding: 14;
+    -fx-pref-width: 236;
+    -fx-min-height: 156;
+    -fx-alignment: top-left;
+    -fx-cursor: hand;
+}
+
+.tile:hover {
+    -fx-background-color: -fx-accent, -gallery-card-bg;
+}
+
+.tile:focused {
+    -fx-background-color: -fx-focus-color, -gallery-card-bg;
+    -fx-background-insets: 0, 2;
+}
+
+.tile:armed {
+    -fx-background-color: -fx-accent, derive(-gallery-card-bg, -6%);
+}
+
+.tile-title {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.tile-description {
+    -fx-fill: -gallery-subtle-text;
+}
+
+/* ---- Fixes for Modena elements without a theme-aware text color ------------------------------------- */
+
+/* The "Show details" toggle of a DialogPane is a Hyperlink without the .hyperlink style class. */
+.dialog-pane > .button-bar > .container > .details-button {
+    -fx-text-fill: -fx-text-background-color;
+}
+
+/* Labels inside a CustomMenuItem should look like the menu item texts. */
+.custom-menu-item .label {
+    -fx-text-fill: -fx-text-base-color;
+}
+
+.settings-key {
+    -fx-text-fill: -gallery-subtle-text;
+}

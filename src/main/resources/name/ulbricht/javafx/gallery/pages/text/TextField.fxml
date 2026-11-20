@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.text.TextFieldController">
+
+    <Example title="A simple TextField" description="Type something and press ENTER to fire onAction.">
+        <VBox spacing="12">
+            <TextField fx:id="simpleField" maxWidth="320" onAction="#onSimpleAction"/>
+            <Label fx:id="liveOutput" styleClass="example-output"/>
+            <Label fx:id="actionOutput" styleClass="example-output" text="Press ENTER in the field."/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <CheckBox fx:id="disableField" text="Disable TextField"/>
+                <CheckBox fx:id="editableField" text="Editable" selected="true"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="A TextField with prompt text and alignment"
+             description="The prompt text is shown while the field is empty.">
+        <VBox spacing="12">
+            <TextField fx:id="promptField" promptText="Enter your name" maxWidth="320"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Label text="Prompt text" styleClass="options-title"/>
+                <TextField fx:id="promptText" text="Enter your name"/>
+                <Label text="Alignment" styleClass="options-title"/>
+                <ComboBox fx:id="alignment" maxWidth="Infinity"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="A numeric TextField with a TextFormatter"
+             description="The filter rejects every change that would produce anything but up to 9 digits. The value converter commits an Integer on ENTER or when the focus leaves the field.">
+        <VBox spacing="12">
+            <TextField fx:id="numericField" maxWidth="200"/>
+            <Label fx:id="numericOutput" styleClass="example-output"/>
+        </VBox>
+    </Example>
+
+    <Example title="An upper-case TextField with a maximum length"
+             description="The filter modifies the change: the inserted text is converted to upper case and input beyond 10 characters is rejected.">
+        <VBox spacing="12">
+            <TextField fx:id="upperField" promptText="LICENSE PLATE" maxWidth="200"/>
+            <Label fx:id="upperOutput" styleClass="example-output"/>
+        </VBox>
+    </Example>
+</DemoPage>

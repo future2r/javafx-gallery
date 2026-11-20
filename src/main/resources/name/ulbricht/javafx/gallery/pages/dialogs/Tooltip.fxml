@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.dialogs.TooltipController">
+
+    <Example title="A simple Tooltip"
+             description="Every Control has a tooltip property. Hover the button to see it.">
+        <VBox spacing="12">
+            <Button text="Hover over me">
+                <tooltip>
+                    <Tooltip text="Simple tooltip"/>
+                </tooltip>
+            </Button>
+        </VBox>
+    </Example>
+
+    <Example title="Timing"
+             description="showDelay, showDuration and hideDelay control when the tooltip appears and how long it stays visible.">
+        <VBox spacing="12">
+            <Button fx:id="timingButton" text="Hover to test the timing"/>
+            <Label fx:id="timingOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Label fx:id="showDelayLabel" styleClass="options-title"/>
+                <Slider fx:id="showDelay" min="0" max="3000" value="1000" blockIncrement="100"/>
+                <Label fx:id="showDurationLabel" styleClass="options-title"/>
+                <Slider fx:id="showDuration" min="500" max="10000" value="5000" blockIncrement="500"/>
+                <Label fx:id="hideDelayLabel" styleClass="options-title"/>
+                <Slider fx:id="hideDelay" min="0" max="3000" value="200" blockIncrement="100"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="Rich content on any node"
+             description="Tooltip.install() attaches a tooltip to any node, e.g. a shape. A tooltip can show a graphic and wrap long text.">
+        <VBox spacing="12">
+            <Rectangle fx:id="shape" width="180" height="90" arcWidth="12" arcHeight="12" fill="#3d8fd1"/>
+            <Label styleClass="example-output" text="Hover the rectangle."/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <CheckBox fx:id="wrapText" text="Wrap text" selected="true"/>
+                <CheckBox fx:id="showGraphic" text="Show graphic" selected="true"/>
+                <Label text="Content display" styleClass="options-title"/>
+                <ComboBox fx:id="contentDisplay" maxWidth="Infinity"/>
+            </VBox>
+        </options>
+    </Example>
+</DemoPage>

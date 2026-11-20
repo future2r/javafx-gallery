@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.StackedBarChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.charts.StackedBarChartController">
+
+    <Example title="A StackedBarChart"
+             description="The values of all series of a category are stacked, so the height of a column is the total. The categories are set explicitly on the CategoryAxis.">
+        <VBox spacing="12">
+            <StackedBarChart fx:id="energyChart" title="Electricity generation by source" prefWidth="560"
+                             prefHeight="340">
+                <xAxis>
+                    <CategoryAxis fx:id="energyXAxis" label="Year"/>
+                </xAxis>
+                <yAxis>
+                    <NumberAxis label="Generation (TWh)"/>
+                </yAxis>
+            </StackedBarChart>
+            <Label fx:id="energyOutput" styleClass="example-output" text="Click a segment."/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Label text="Title" styleClass="options-title"/>
+                <TextField fx:id="energyTitle"/>
+                <CheckBox fx:id="energyAnimated" text="Animated"/>
+                <CheckBox fx:id="energyLegend" text="Legend visible"/>
+                <Label text="Legend side" styleClass="options-title"/>
+                <ComboBox fx:id="energyLegendSide" maxWidth="Infinity"/>
+                <Label text="Category gap" styleClass="options-title"/>
+                <Slider fx:id="energyCategoryGap" min="0" max="60" showTickLabels="true" majorTickUnit="20"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="Adding and removing series"
+             description="Add a series to put another layer on top of every column; values can be changed live as well.">
+        <VBox spacing="12">
+            <StackedBarChart fx:id="tasksChart" title="Completed tasks per weekday" prefWidth="560" prefHeight="340">
+                <xAxis>
+                    <CategoryAxis fx:id="tasksXAxis" label="Weekday"/>
+                </xAxis>
+                <yAxis>
+                    <NumberAxis label="Tasks"/>
+                </yAxis>
+            </StackedBarChart>
+            <Label fx:id="tasksOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Button text="Add series" maxWidth="Infinity" onAction="#onAddSeries"/>
+                <Button text="Remove last series" maxWidth="Infinity" onAction="#onRemoveSeries"/>
+                <Button text="Randomize values" maxWidth="Infinity" onAction="#onRandomize"/>
+            </VBox>
+        </options>
+    </Example>
+</DemoPage>

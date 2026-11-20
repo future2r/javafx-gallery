@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.status.ProgressIndicatorController">
+
+    <Example title="A determinate ProgressIndicator"
+             description="A determinate indicator shows the progress as a pie and the percentage; at 100 % it shows &quot;Done&quot;.">
+        <VBox spacing="12">
+            <ProgressIndicator fx:id="determinate" prefWidth="80" prefHeight="80"/>
+            <Label fx:id="determinateOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Label text="Progress" styleClass="options-title"/>
+                <Slider fx:id="progress" min="0" max="100" value="40"/>
+                <Label fx:id="sizeLabel" styleClass="options-title"/>
+                <Slider fx:id="size" min="24" max="140" value="80"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="An indeterminate ProgressIndicator"
+             description="With a progress of -1 the indicator spins, like a progress ring for an operation of unknown duration.">
+        <HBox spacing="24" alignment="CENTER_LEFT">
+            <ProgressIndicator fx:id="small" prefWidth="24" prefHeight="24"/>
+            <ProgressIndicator fx:id="medium" prefWidth="48" prefHeight="48"/>
+            <ProgressIndicator fx:id="large" prefWidth="80" prefHeight="80"/>
+        </HBox>
+        <options>
+            <VBox spacing="10">
+                <CheckBox fx:id="active" text="Active" selected="true"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="Showing the progress of a background Task"
+             description="The indicator is bound to the progress of a javafx.concurrent.Task running on a background thread.">
+        <VBox spacing="12">
+            <HBox spacing="16" alignment="CENTER_LEFT">
+                <ProgressIndicator fx:id="taskIndicator" prefWidth="64" prefHeight="64" progress="0"/>
+                <Label fx:id="taskMessage" text="Not started."/>
+            </HBox>
+            <HBox spacing="8">
+                <Button fx:id="startButton" text="Start" onAction="#onStart"/>
+                <Button fx:id="cancelButton" text="Cancel" onAction="#onCancel" disable="true"/>
+            </HBox>
+            <Label fx:id="taskOutput" styleClass="example-output"/>
+        </VBox>
+    </Example>
+</DemoPage>

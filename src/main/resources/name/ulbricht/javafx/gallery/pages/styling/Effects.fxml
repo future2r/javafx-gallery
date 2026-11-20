@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.styling.EffectsController">
+
+    <Example title="Applying an effect"
+             description="Node.setEffect applies a single effect to a node and all its children. Choose an effect and tune its parameters.">
+        <VBox spacing="12">
+            <StackPane fx:id="effectStage" prefWidth="560" prefHeight="300" minHeight="300"/>
+            <Label fx:id="effectOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Label text="Effect" styleClass="options-title"/>
+                <ComboBox fx:id="effectChoice" maxWidth="Infinity"/>
+                <VBox fx:id="effectParameters" spacing="6"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="Chaining effects"
+             description="Most effects have an input property; setting another effect as input builds a chain that is applied from the innermost effect outwards.">
+        <VBox spacing="12">
+            <StackPane fx:id="chainStage" prefWidth="560" prefHeight="300" minHeight="300"/>
+            <Label fx:id="chainOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Label text="Effects (inner to outer)" styleClass="options-title"/>
+                <CheckBox fx:id="chainBlur" text="GaussianBlur"/>
+                <CheckBox fx:id="chainSepia" text="SepiaTone"/>
+                <CheckBox fx:id="chainReflection" text="Reflection" selected="true"/>
+                <CheckBox fx:id="chainShadow" text="DropShadow" selected="true"/>
+            </VBox>
+        </options>
+    </Example>
+</DemoPage>

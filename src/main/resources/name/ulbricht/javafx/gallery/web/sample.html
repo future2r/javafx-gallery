@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaFX WebView sample</title>
+    <style>
+        :root {
+            --accent: #3d8fd1;
+        }
+        body {
+            margin: 0;
+            padding: 24px;
+            font-family: "Segoe UI", system-ui, sans-serif;
+            color: #1f2933;
+            background: linear-gradient(135deg, #f4f7fb 0%, #e3ecf7 100%);
+        }
+        h1 {
+            margin-top: 0;
+            color: var(--accent);
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+        }
+        button {
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 16px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        button:hover {
+            filter: brightness(1.1);
+        }
+        #message {
+            margin-top: 12px;
+            padding: 8px 12px;
+            border-left: 4px solid var(--accent);
+            background: #f0f5fb;
+            min-height: 1.2em;
+        }
+        canvas {
+            display: block;
+            border-radius: 8px;
+            background: #1c2a66;
+        }
+        code {
+            background: #eef1f5;
+            padding: 1px 4px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+<h1 id="title">Hello from WebView</h1>
+
+<div class="card">
+    <p>This page is bundled with the gallery and rendered by the WebKit based <code>WebEngine</code>.</p>
+    <button onclick="greet()">Click me</button>
+    <span id="clicks">0 clicks</span>
+    <div id="message">Messages from Java appear here.</div>
+</div>
+
+<div class="card">
+    <p>A canvas animated with <code>requestAnimationFrame</code>:</p>
+    <canvas id="canvas" width="360" height="140"></canvas>
+</div>
+
+<div class="card" id="more">
+    <p><a href="#title">Jump to the top</a> · <a href="#more">Link to this section</a></p>
+</div>
+
+<script>
+    var clicks = 0;
+
+    /* Called by the button. alert() is forwarded to Java through WebEngine.setOnAlert(). */
+    function greet() {
+        clicks++;
+        document.getElementById('clicks').textContent = clicks + (clicks === 1 ? ' click' : ' clicks');
+        alert('Hello from JavaScript! The button was clicked ' + clicks + ' times.');
+    }
+
+    /* Called from Java via WebEngine.executeScript(). */
+    function showMessage(text) {
+        document.getElementById('message').textContent = text;
+        return 'Message received (' + text.length + ' characters)';
+    }
+
+    /* Called from Java via WebEngine.executeScript(). */
+    function setAccent(color) {
+        document.documentElement.style.setProperty('--accent', color);
+    }
+
+    function getClicks() {
+        return clicks;
+    }
+
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+    var start = Date.now();
+
+    function draw() {
+        var t = (Date.now() - start) / 1000;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (var i = 0; i < 12; i++) {
+            var x = 30 + i * 28;
+            var y = 70 + Math.sin(t * 2 + i * 0.5) * 40;
+            ctx.beginPath();
+            ctx.arc(x, y, 9, 0, Math.PI * 2);
+            ctx.fillStyle = 'hsl(' + ((i * 30 + t * 40) % 360) + ', 75%, 62%)';
+            ctx.fill();
+        }
+        requestAnimationFrame(draw);
+    }
+
+    draw();
+</script>
+</body>
+</html>

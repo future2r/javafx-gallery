@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="name.ulbricht.javafx.gallery.shell.HomeController"
+      styleClass="page, home-page">
+    <VBox styleClass="hero" spacing="6">
+        <Label text="JavaFX Gallery" styleClass="hero-title"/>
+        <Label wrapText="true" styleClass="page-description"
+               text="Explore the standard controls of JavaFX. Every page shows live examples together with options to change them and a link to the API documentation."/>
+        <Label fx:id="summary" styleClass="page-category"/>
+    </VBox>
+    <Label text="Categories" styleClass="section-title"/>
+    <FlowPane fx:id="categoryTiles" hgap="12" vgap="12"/>
+    <Label text="All controls" styleClass="section-title"/>
+    <FlowPane fx:id="controlTiles" hgap="12" vgap="12"/>
+</VBox>

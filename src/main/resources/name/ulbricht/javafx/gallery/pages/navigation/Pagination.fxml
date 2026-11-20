@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.layout.VBox?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.navigation.PaginationController">
+
+    <Example title="A Pagination with numbered page indicators"
+             description="The page factory creates the content of a page on demand. maxPageIndicatorCount limits the number of visible page buttons.">
+        <VBox spacing="12">
+            <Pagination fx:id="basicPagination" pageCount="10" prefWidth="480" prefHeight="260" maxWidth="-Infinity"
+                        maxHeight="-Infinity"/>
+            <Label fx:id="basicOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Label text="Page count" styleClass="options-title"/>
+                <Spinner fx:id="pageCount" maxWidth="Infinity"/>
+                <Label text="Max. page indicators" styleClass="options-title"/>
+                <Spinner fx:id="maxIndicators" maxWidth="Infinity"/>
+                <CheckBox fx:id="bulletStyle" text="Bullet style"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="Paging through a large list"
+             description="A Pagination showing 1,000 generated items in pages. Each page is a ListView created by the page factory with a sub list of the items.">
+        <Pagination fx:id="listPagination" prefWidth="420" prefHeight="360" maxWidth="-Infinity" maxHeight="-Infinity"/>
+        <options>
+            <VBox spacing="10">
+                <Label text="Items per page" styleClass="options-title"/>
+                <ComboBox fx:id="itemsPerPage" maxWidth="Infinity"/>
+                <Label fx:id="listOutput" styleClass="example-output" wrapText="true"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="A flip view with bullets"
+             description="With the bullet style class, Pagination shows dots instead of page numbers – similar to a flip view. Optionally the pages advance automatically.">
+        <Pagination fx:id="flipPagination" styleClass="bullet" prefWidth="420" prefHeight="280" maxWidth="-Infinity"
+                    maxHeight="-Infinity"/>
+        <options>
+            <VBox spacing="10">
+                <CheckBox fx:id="autoAdvance" text="Advance every 3 seconds"/>
+            </VBox>
+        </options>
+    </Example>
+</DemoPage>

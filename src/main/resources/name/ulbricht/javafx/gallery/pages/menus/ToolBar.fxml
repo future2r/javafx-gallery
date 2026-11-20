@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.menus.ToolBarController">
+
+    <Example title="A horizontal ToolBar"
+             description="A ToolBar lays out buttons, toggle buttons, separators and other controls in a row.">
+        <VBox spacing="12">
+            <ToolBar>
+                <items>
+                    <Button fx:id="newButton" onAction="#onToolButton" userData="New"/>
+                    <Button fx:id="openButton" onAction="#onToolButton" userData="Open"/>
+                    <Button fx:id="saveButton" onAction="#onToolButton" userData="Save"/>
+                    <Separator/>
+                    <ToggleButton fx:id="boldToggle" text="B" style="-fx-font-weight: bold;"/>
+                    <ToggleButton fx:id="italicToggle" text="I" style="-fx-font-style: italic;"/>
+                    <ToggleButton fx:id="underlineToggle" text="U" style="-fx-underline: true;"/>
+                    <Separator/>
+                    <ComboBox fx:id="fontSize" prefWidth="80"/>
+                    <Pane HBox.hgrow="ALWAYS"/>
+                    <Button text="Share" onAction="#onToolButton" userData="Share"/>
+                </items>
+            </ToolBar>
+            <Label fx:id="preview" text="The quick brown fox jumps over the lazy dog." wrapText="true"/>
+            <Label fx:id="editorOutput" styleClass="example-output" text="Use the toolbar."/>
+        </VBox>
+    </Example>
+
+    <Example title="Overflow"
+             description="Items that do not fit into the ToolBar move into an overflow menu, opened by the chevron button at its end.">
+        <VBox spacing="12">
+            <ToolBar fx:id="overflowToolBar" maxWidth="-Infinity"/>
+            <Label fx:id="overflowOutput" styleClass="example-output" text="Make the ToolBar narrower."/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Label text="ToolBar width" styleClass="options-title"/>
+                <Slider fx:id="widthSlider" min="120" max="640" value="360"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="Orientation"
+             description="With VERTICAL orientation the ToolBar stacks its items; separators turn horizontal automatically.">
+        <HBox spacing="16">
+            <ToolBar fx:id="orientedToolBar">
+                <items>
+                    <Button fx:id="cursorButton" onAction="#onDrawTool" userData="Select"/>
+                    <Button fx:id="penButton" onAction="#onDrawTool" userData="Pen"/>
+                    <Button fx:id="shapeButton" onAction="#onDrawTool" userData="Shape"/>
+                    <Separator/>
+                    <Button fx:id="eraseButton" onAction="#onDrawTool" userData="Eraser"/>
+                </items>
+            </ToolBar>
+            <Label fx:id="drawOutput" styleClass="example-output" text="Pick a tool."/>
+        </HBox>
+        <options>
+            <VBox spacing="10">
+                <Label text="Orientation" styleClass="options-title"/>
+                <ComboBox fx:id="orientationChoice" maxWidth="Infinity"/>
+            </VBox>
+        </options>
+    </Example>
+</DemoPage>

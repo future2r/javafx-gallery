@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.basicinput.CheckBoxController">
+
+    <Example title="A two-state CheckBox">
+        <VBox spacing="12">
+            <CheckBox fx:id="twoState" text="Two-state CheckBox"/>
+            <Label fx:id="twoStateOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <CheckBox fx:id="disableTwoState" text="Disable CheckBox"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="A three-state CheckBox"
+             description="With allowIndeterminate the CheckBox cycles through checked, unchecked and indeterminate.">
+        <VBox spacing="12">
+            <CheckBox fx:id="threeState" text="Three-state CheckBox" allowIndeterminate="true" indeterminate="true"/>
+            <Label fx:id="threeStateOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <CheckBox fx:id="allowIndeterminate" text="Allow indeterminate" selected="true"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="Using a three-state CheckBox to select all"
+             description="The parent CheckBox shows the indeterminate state when only some of the options are checked.">
+        <VBox spacing="8">
+            <CheckBox fx:id="selectAll" text="Select all"/>
+            <VBox spacing="8" style="-fx-padding: 0 0 0 24;">
+                <CheckBox fx:id="option1" text="Option 1" selected="true"/>
+                <CheckBox fx:id="option2" text="Option 2"/>
+                <CheckBox fx:id="option3" text="Option 3"/>
+            </VBox>
+            <Label fx:id="selectAllOutput" styleClass="example-output"/>
+        </VBox>
+    </Example>
+</DemoPage>

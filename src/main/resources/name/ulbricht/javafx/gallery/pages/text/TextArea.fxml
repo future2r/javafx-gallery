@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.VBox?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.text.TextAreaController">
+
+    <Example title="A multi-line TextArea">
+        <VBox spacing="12">
+            <TextArea fx:id="simpleArea" prefRowCount="6" maxWidth="480" promptText="Write something…"
+                      text="A TextArea holds multiple lines of plain text.&#10;&#10;Turn wrapping off to get a horizontal scroll bar for long lines like this one, which goes on and on without any line break at all."/>
+            <Label fx:id="simpleOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <CheckBox fx:id="wrapText" text="Wrap text" selected="true"/>
+                <CheckBox fx:id="editable" text="Editable" selected="true"/>
+                <CheckBox fx:id="disableArea" text="Disable TextArea"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="Changing the font size" description="The font size is set with an inline -fx-font-size style.">
+        <TextArea fx:id="fontArea" prefRowCount="4" maxWidth="480" wrapText="true"
+                  text="The quick brown fox jumps over the lazy dog."/>
+        <options>
+            <VBox spacing="10">
+                <Label fx:id="fontSizeTitle" styleClass="options-title"/>
+                <Slider fx:id="fontSize" min="9" max="32" value="13"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="Editing the text programmatically"
+             description="TextInputControl offers methods to insert, append, select and replace text and to undo changes.">
+        <VBox spacing="12">
+            <FlowPane hgap="8" vgap="8">
+                <Button text="Insert at caret" onAction="#onInsert"/>
+                <Button text="Append line" onAction="#onAppend"/>
+                <Button text="Select all" onAction="#onSelectAll"/>
+                <Button text="Upper-case selection" onAction="#onUpperCase"/>
+                <Button text="Undo" onAction="#onUndo"/>
+                <Button text="Clear" onAction="#onClear"/>
+            </FlowPane>
+            <TextArea fx:id="editArea" prefRowCount="5" maxWidth="480" wrapText="true"
+                      text="Place the caret somewhere in this text and use the buttons above."/>
+            <Label fx:id="editOutput" styleClass="example-output"/>
+        </VBox>
+    </Example>
+</DemoPage>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.basicinput.DatePickerController">
+
+    <Example title="A simple DatePicker">
+        <VBox spacing="12">
+            <DatePicker fx:id="simplePicker" promptText="Pick a date"/>
+            <Label fx:id="simpleOutput" styleClass="example-output" text="No date selected."/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <CheckBox fx:id="disablePicker" text="Disable DatePicker"/>
+                <CheckBox fx:id="editablePicker" text="Editable" selected="true"/>
+                <CheckBox fx:id="weekNumbers" text="Show week numbers"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="Restricting selectable dates with a day cell factory"
+             description="A custom DateCell disables dates in the past and – optionally – weekends.">
+        <VBox spacing="12">
+            <DatePicker fx:id="restrictedPicker" promptText="Book an appointment"/>
+            <Label fx:id="restrictedOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <CheckBox fx:id="blockWeekends" text="Block weekends" selected="true"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="Date format and calendar system"
+             description="A StringConverter defines how the date is shown and parsed; the chronology switches the calendar system.">
+        <VBox spacing="12">
+            <DatePicker fx:id="formatPicker"/>
+            <Label fx:id="formatOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Label text="Format pattern" styleClass="options-title"/>
+                <ComboBox fx:id="pattern" maxWidth="Infinity"/>
+                <Label text="Chronology" styleClass="options-title"/>
+                <ComboBox fx:id="chronology" maxWidth="Infinity"/>
+            </VBox>
+        </options>
+    </Example>
+</DemoPage>

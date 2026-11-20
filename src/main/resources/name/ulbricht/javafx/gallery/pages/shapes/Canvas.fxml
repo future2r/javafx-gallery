@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.shapes.CanvasController">
+
+    <Example title="Drawing with a GraphicsContext"
+             description="Canvas is an immediate mode surface: the GraphicsContext draws rectangles, ovals, arcs, polygons, Bézier paths and text. Transforms, global alpha and effects apply to the following drawing calls.">
+        <Canvas fx:id="drawingCanvas" width="560" height="300"/>
+        <options>
+            <VBox spacing="10">
+                <Label text="Line width" styleClass="options-title"/>
+                <Slider fx:id="lineWidth" min="1" max="12" value="3" showTickLabels="true" majorTickUnit="4"/>
+                <Label text="Global alpha" styleClass="options-title"/>
+                <Slider fx:id="globalAlpha" min="0.1" max="1" value="1" showTickLabels="true" majorTickUnit="0.3"/>
+                <Label text="Rotation" styleClass="options-title"/>
+                <Slider fx:id="rotation" min="-30" max="30" value="0" showTickLabels="true" majorTickUnit="15"/>
+                <CheckBox fx:id="showGrid" text="Draw grid" selected="true"/>
+                <CheckBox fx:id="dropShadow" text="Drop shadow effect"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="A freehand drawing canvas"
+             description="Mouse pressed starts a path, every drag event adds a line segment. Draw with the mouse.">
+        <VBox spacing="12">
+            <StackPane styleClass="demo-area" maxWidth="-Infinity" maxHeight="-Infinity">
+                <Canvas fx:id="inkCanvas" width="560" height="300"/>
+            </StackPane>
+            <Label fx:id="inkOutput" styleClass="example-output" text="Draw something."/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Label text="Pen color" styleClass="options-title"/>
+                <ColorPicker fx:id="penColor" maxWidth="Infinity"/>
+                <Label text="Pen width" styleClass="options-title"/>
+                <Slider fx:id="penWidth" min="1" max="30" value="4" showTickLabels="true" majorTickUnit="10"/>
+                <Button text="Clear" maxWidth="Infinity" onAction="#onClearInk"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="Writing pixels"
+             description="The PixelWriter of the GraphicsContext sets individual pixels – here to render the Mandelbrot set.">
+        <Canvas fx:id="fractalCanvas" width="420" height="260"/>
+        <options>
+            <VBox spacing="10">
+                <Label text="Max. iterations" styleClass="options-title"/>
+                <Slider fx:id="iterations" min="8" max="200" value="60" showTickLabels="true" majorTickUnit="64"/>
+                <Label text="Hue shift" styleClass="options-title"/>
+                <Slider fx:id="hueShift" min="0" max="360" value="200" showTickLabels="true" majorTickUnit="90"/>
+            </VBox>
+        </options>
+    </Example>
+</DemoPage>

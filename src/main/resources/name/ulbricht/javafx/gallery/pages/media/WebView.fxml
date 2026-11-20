@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.web.WebView?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.media.WebViewController">
+
+    <Example title="A small browser"
+             description="WebView renders the pages loaded by its WebEngine. The engine keeps a history for Back and Forward, and its load worker reports the loading state.">
+        <VBox spacing="8">
+            <HBox spacing="6" alignment="CENTER_LEFT">
+                <Button fx:id="backButton" text="◀" onAction="#onBack"/>
+                <Button fx:id="forwardButton" text="▶" onAction="#onForward"/>
+                <Button text="⟳" onAction="#onReload"/>
+                <TextField fx:id="addressField" HBox.hgrow="ALWAYS" onAction="#onGo" promptText="Enter a URL"/>
+                <Button text="Go" onAction="#onGo"/>
+                <Button text="Home" onAction="#onHome"/>
+            </HBox>
+            <WebView fx:id="browser" prefHeight="380" minHeight="200"/>
+            <Label fx:id="browserOutput" styleClass="example-output" wrapText="true"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Label fx:id="zoomLabel" styleClass="options-title"/>
+                <Slider fx:id="zoomSlider" min="0.5" max="2" value="1" majorTickUnit="0.25" snapToTicks="true"/>
+                <CheckBox fx:id="javaScriptEnabled" text="JavaScript enabled" selected="true"/>
+                <CheckBox fx:id="contextMenuEnabled" text="Context menu enabled" selected="true"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="Java ↔ JavaScript"
+             description="WebEngine.executeScript() calls JavaScript functions and returns their results as Java objects. In the other direction, the page's alert() calls arrive in Java through WebEngine.setOnAlert().">
+        <VBox spacing="8">
+            <WebView fx:id="scriptView" prefHeight="300" minHeight="200"/>
+            <HBox spacing="6" alignment="CENTER_LEFT">
+                <TextField fx:id="messageField" HBox.hgrow="ALWAYS" text="Hello from Java!" onAction="#onSendMessage"/>
+                <Button text="Send to page" onAction="#onSendMessage"/>
+                <Button text="Read clicks" onAction="#onReadClicks"/>
+            </HBox>
+            <Label fx:id="scriptOutput" styleClass="example-output" wrapText="true"
+                   text="Click the button in the page, or send a message from Java."/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Label text="Accent color (set via JavaScript)" styleClass="options-title" wrapText="true"/>
+                <ColorPicker fx:id="accentPicker" maxWidth="Infinity"/>
+                <Label text="Page title" styleClass="options-title"/>
+                <TextField fx:id="titleField" text="Hello from WebView" onAction="#onSetTitle"/>
+                <Button text="Set title via DOM" onAction="#onSetTitle"/>
+            </VBox>
+        </options>
+    </Example>
+</DemoPage>

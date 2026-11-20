@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import name.ulbricht.javafx.gallery.shell.DemoPage?>
+<?import name.ulbricht.javafx.gallery.shell.Example?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<DemoPage xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="name.ulbricht.javafx.gallery.pages.charts.LineChartController">
+
+    <Example title="A LineChart with several series"
+             description="A CategoryAxis for the months and a NumberAxis for the values. Click a data point to inspect it.">
+        <VBox spacing="12">
+            <LineChart fx:id="temperatureChart" title="Average temperature" prefWidth="560" prefHeight="340">
+                <xAxis>
+                    <CategoryAxis fx:id="temperatureXAxis" label="Month"/>
+                </xAxis>
+                <yAxis>
+                    <NumberAxis fx:id="temperatureYAxis" label="Temperature (°C)"/>
+                </yAxis>
+            </LineChart>
+            <Label fx:id="temperatureOutput" styleClass="example-output" text="Click a data point."/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Label text="Title" styleClass="options-title"/>
+                <TextField fx:id="temperatureTitle"/>
+                <Label text="X axis label" styleClass="options-title"/>
+                <TextField fx:id="temperatureXLabel"/>
+                <Label text="Y axis label" styleClass="options-title"/>
+                <TextField fx:id="temperatureYLabel"/>
+                <CheckBox fx:id="temperatureAnimated" text="Animated"/>
+                <CheckBox fx:id="temperatureSymbols" text="Create symbols"/>
+                <CheckBox fx:id="temperatureLegend" text="Legend visible"/>
+                <Label text="Legend side" styleClass="options-title"/>
+                <ComboBox fx:id="temperatureLegendSide" maxWidth="Infinity"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="Adding and removing series and data points"
+             description="Changes to the observable data lists are reflected – and animated – immediately.">
+        <VBox spacing="12">
+            <LineChart fx:id="salesChart" title="Weekly sales" prefWidth="560" prefHeight="340">
+                <xAxis>
+                    <NumberAxis fx:id="salesXAxis" label="Week" forceZeroInRange="false"/>
+                </xAxis>
+                <yAxis>
+                    <NumberAxis label="Units sold"/>
+                </yAxis>
+            </LineChart>
+            <Label fx:id="salesOutput" styleClass="example-output"/>
+        </VBox>
+        <options>
+            <VBox spacing="10">
+                <Button text="Add series" maxWidth="Infinity" onAction="#onAddSeries"/>
+                <Button text="Remove last series" maxWidth="Infinity" onAction="#onRemoveSeries"/>
+                <Button text="Add data point" maxWidth="Infinity" onAction="#onAddPoint"/>
+                <Button text="Remove first data point" maxWidth="Infinity" onAction="#onRemovePoint"/>
+            </VBox>
+        </options>
+    </Example>
+
+    <Example title="A live updating LineChart"
+             description="A Timeline appends a value every 250 ms and moves the bounds of the X axis (auto ranging is off).">
+        <LineChart fx:id="liveChart" title="System load" prefWidth="560" prefHeight="300" animated="false"
+                   createSymbols="false">
+            <xAxis>
+                <NumberAxis fx:id="liveXAxis" label="Sample" autoRanging="false" tickUnit="10"/>
+            </xAxis>
+            <yAxis>
+                <NumberAxis label="Usage (%)" autoRanging="false" lowerBound="0" upperBound="100" tickUnit="20"/>
+            </yAxis>
+        </LineChart>
+        <options>
+            <VBox spacing="10">
+                <CheckBox fx:id="liveRunning" text="Running" selected="true"/>
+                <Label text="Speed" styleClass="options-title"/>
+                <Slider fx:id="liveSpeed" min="0.25" max="4" value="1" showTickLabels="true" majorTickUnit="1"/>
+            </VBox>
+        </options>
+    </Example>
+</DemoPage>
